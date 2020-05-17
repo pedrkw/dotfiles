@@ -1,0 +1,730 @@
+#
+#Criado by: @pedrkw
+#
+
+###########################################################
+# ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗  #
+# ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗ #
+# ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝ #
+# ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗ #
+# ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║ #
+# ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ #
+###########################################################
+
+
+
+#################################################################
+#                             CORES                             #
+#################################################################
+
+[colors]
+background = #282c34
+foreground = #abb2bf
+background-alt = #444
+foreground-alt = #444
+primary = ${colors.background}
+secondary = ${colors.foreground}
+alert = #f73939
+
+##############################################3
+
+;[Pywal]
+;foreground = ${xrdb:color7:#222}
+;background = ${xrdb:color0:#222}
+;primary = ${xrdb:color1:#222}
+;secondary = ${xrdb:color2:#222}
+;alert = #f73939
+
+#################################################################
+#                               Barra TOP                       #
+#################################################################
+
+[bar/bartop]
+;monitor = ${env:MONITOR:eDP1}
+# Set false to use the bar on top
+bottom = false
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 1
+border-color = #545862
+;border-color = ${xrdb:color8:#222}
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+
+#################################################################
+#                         FONTS BAR TOP                         #
+#################################################################
+
+font-0 = "Poppins:style=Regular:pixelsize=9;2"
+;font-0 = "Baumans:style=Regular:pixelsize=9;2"
+;font-0 = "FireCode:style=Regular:pixelsize=8;2"
+;font-0= "OpenSans:style=Regular:pixelsize=10;3"
+font-3 = "xos4 Terminess Powerline:pixelsize=13;1"
+font-2 = "Hack Nerd Font:style=Regular:pixelsize=9;2"
+font-1 = "Font Awesome 5 Free:size=10;1"
+
+#################################################################
+#                         SEPARADOR BAR TOP                     #
+#################################################################
+
+separator = |
+;separator = /
+
+#################################################################
+#                         MÓDULOS BAR TOP                       #
+#################################################################
+
+modules-left = i3 bspwm
+modules-center = player-mpris-tail title
+modules-right = xkeyboard pavucontrol pulseaudio net popup-calendar date
+
+
+#################################################################
+#                         TRAY BAR TOP                          #
+#################################################################
+
+;tray-position = right
+;tray-detached = false
+;tray-maxsize = 12
+;tray-padding = 4
+;tray-scale = 1.0
+;tray-transparent = false
+;tray-offset-x = 1
+;tray-offset-y = 1
+;tray-background = ${colors.background}
+
+#################################################################
+#                        OPTIONS IGNORE                         #
+#################################################################
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+#################################################################
+#                          BARRA BOTTOM                         #
+#################################################################
+
+[bar/barbottom]
+;monitor = ${env:MONITOR:eDP1}
+# Set false to use the bar on top
+bottom = true
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 1
+border-color = #545862
+;border-color = ${xrdb:color8:#222}
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+#################################################################
+#                         FONTS BAR BOTTOM                      #
+#################################################################
+
+font-0 = "Poppins:style=Regular:pixelsize=9;2"
+;font-0 = "Baumans:style=Regular:pixelsize=9;2"
+;font-0 = "FireCode:style=Regular:pixelsize=8;2"
+;font-0= "OpenSans:style=Regular:pixelsize=10;3"
+font-3 = "xos4 Terminess Powerline:pixelsize=13;1"
+font-2 = "Hack Nerd Font:style=Regular:pixelsize=9;2"
+font-1 = "Font Awesome 5 Free:size=10;1"
+
+#################################################################
+#                         SEPARADOR BAR BOTTOM                  #
+#################################################################
+
+separator = |
+;separator = /
+
+#################################################################
+#                         MÓDULOS BAR BOTTOM                    #
+#################################################################
+
+modules-left = linux powermenu refresh upinfo-arch lock print
+modules-center = firefox terminal menu manager telegram
+modules-right = kernel user 
+
+;modules-left = user pywall1 pywall2 pywall3 kernel 
+;modules-center = firefox terminal menu manager telegram
+;modules-right = print  upinfo-arch refresh lock powermenu linux
+
+#################################################################
+#                         TRAY BAR BOTTOM                       #
+#################################################################
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 12
+tray-padding = 4
+tray-scale = 1.0
+tray-transparent = false
+;tray-offset-x = 1
+;tray-offset-y = 1
+tray-background = ${colors.background}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+############################
+#
+############################
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+#
+#
+#
+
+[module/title]
+type = internal/xwindow
+
+;format =  <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+;format-underline = ${colors.foreground}
+;label-underline = ${colors.foreground}
+
+label = %title%
+label-foreground = ${colors.foreground}
+label-maxlen = 50
+
+label-empty = Vazio
+label-empty-foreground = ${colors.foreground}
+
+#
+#
+#
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+#format-prefix-underline = #778da9
+
+label-layout = %layout%
+#label-layout-underline = #778da9
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${xrdb:color:#222}
+#label-indicator-underline = #778da9
+
+#
+#
+#
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+;label-focused-background = ${xrdb:color8:#222}
+;label-focused-underline= ${xrdb:color7:#222}
+label-focused-underline= #abb2bf
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+;label-urgent-background = ${xrdb:color7:#222}
+label-urgent-background = #abb2bf
+label-urgent-padding = 2
+
+label-empty = %index%
+;label-empty-foreground = ${xrdb:color3:#222}
+label-empty-foreground = #e5c07b
+label-empty-padding = 2
+
+; Separator in between workspaces
+ label-separator = |
+
+##################################################
+#                  MODULO I3                     #
+##################################################
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = true
+
+ws-icon-0 =
+ws-icon-1 =
+ws-icon-2 =
+ws-icon-3 =
+ws-icon-4 = 
+ws-icon-5 = 
+ws-icon-6 =
+ws-icon-7 = 
+ws-icon-8 = 
+ws-icon-9 = 
+
+label-separator = |
+strip-wsnumbers = false
+label-state-foreground = ${xrdb:color2:#222}
+
+label-mode = %mode%
+label-mode-foreground = ${xrdb:color3:#222}
+label-mode-background = ${xrdb:color0:#222}
+;label-mode-underline = ${xrdb:color7:#222}
+label-mode-padding = 2
+
+label-focused = %name%
+label-focused-foreground = ${xrdb:color15:#222}
+label-focused-background = ${xrdb:color0:#222}
+label-focused-underline = ${xrdb:color7:#222}
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-foreground = ${xrdb:color3:#222}
+;label-unfocused-background = ${xrdb:color7:#222}
+;label-unfocused-underline = ${xrdb:color15:#222}
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-foreground = ${xrdb:color8:#222}
+label-visible-background = ${xrdb:color0:#222}
+;label-visible-underline = ${xrdb:color7:#222}
+label-visible-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = ${xrdb:color8:#222}
+label-urgent-background = ${xrdb:color2:#222}
+;label-urgent-underline = ${xrdb:color3:#222}
+label-urgent-padding = 4
+
+#
+#
+#
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+#
+#
+#
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #b4c8ca
+#format-underline = #778da9
+label = %percentage:2%%
+
+#
+#
+#
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #b4c8ca
+#format-underline = #778da9
+label = %percentage_used%%
+
+#
+#
+#
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+#format-connected-underline = #778da9
+format-connected-prefix = " "
+format-connected-prefix-foreground = #b4c8ca
+label-connected = Conectado
+
+#format-disconnected =
+format-disconnected = <label-disconnected>
+#format-disconnected-underline = #778da9
+label-disconnected = Net caiu garai
+label-disconnected-foreground = ${xrdb:color7:#222}
+
+#
+#
+#
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = #b4c8ca
+#format-underline = #778da9
+
+label = %date% %time%
+
+#
+#
+#
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${xrdb:color3:#222}
+bar-volume-foreground-1 = ${xrdb:color3:#222}
+bar-volume-foreground-2 = ${xrdb:color3:#222}
+bar-volume-foreground-3 = ${xrdb:color3:#222}
+bar-volume-foreground-4 = ${xrdb:color3:#222}
+bar-volume-foreground-5 = ${xrdb:color4:#222}
+bar-volume-foreground-6 = ${xrdb:color5:#222}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+#
+#
+#
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${xrdb:color7:#222}
+label-close = | Cancelar
+label-close-foreground = ${xrdb:color7:#222}
+label-separator = |
+label-separator-foreground = ${xrdb:color2:#222}
+
+menu-0-0 = reiniciar!
+menu-0-0-exec = menu-open-1
+menu-0-1 = desligar!
+menu-0-1-exec = menu-open-2
+menu-0-2 = suspender!
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = reiniciar
+menu-1-0-exec = systemctl reboot
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = desligar
+menu-2-0-exec = systemctl poweroff
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = suspender
+menu-3-0-exec = systemctl suspend
+menu-3-1-exec = menu-open-0
+
+#############################################################################
+#                                 IGNORE                                    #
+#############################################################################
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+#############################################################################
+#                                MODULOS PERSONALIZADOS                     #
+#############################################################################
+[module/pavucontrol]
+type = custom/text
+content = " 墳 "
+content-foreground = ${colors.foreground}
+click-left = exec pavucontrol &
+
+[module/menu]
+type = custom/text
+content = "%{F${colors.foreground}  %{F-} Menu"
+content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = rofi -show drun &
+
+[module/firefox]
+type = custom/text
+content = "  "
+content-foreground = #F2A65A
+;content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec firefox &
+
+[module/telegram]
+type = custom/text
+content = "  "
+content-foreground = #20A4F3
+;content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec telegram &
+;click-left = exec telegram-desktop &
+
+[module/terminal]
+type = custom/text
+content = "  "
+content-foreground = #CCE6F4
+;content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec urxvt &
+
+[module/manager]
+type = custom/text
+content = "  "
+content-foreground = #BBC7A4
+;content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec pcmanfm &
+
+[module/user]
+type = custom/text
+content = "%{F${colors.foreground}  %{F-} Olá, OniiChan"
+;content-underline = ${colors.foreground}
+
+[module/linux]
+type = custom/text
+content = "%{F${colors.foreground}%{F-} Arch Linux"
+;content-underline = ${colors.foreground}
+click-left = firefox https://www.archlinux.org/ &
+
+[module/popup-calendar]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/popup-calendar.sh
+interval = 5
+click-left = $HOME/.config/polybar/scripts/popup-calendar.sh --popup &
+
+[module/frase]
+type = custom/text
+content = "%{F${colors.foreground}%{F-}  Caçar E-girl!!!"
+;content-underline = ${colors.foreground}
+
+[module/refresh]
+type = custom/text
+content = "  "
+content-foreground = ${colors.foreground}
+;click-left = bspc wm -r &
+click-left = i3-msg restart &
+
+[module/github]
+type = custom/text
+content = 
+;content = 
+content-foreground = ${colors.foreground}
+click-left = ~/Scripts/github.sh
+
+[module/print]
+type = custom/text
+content = "%{F${colors.foreground}  %{F-}"
+;content-underline = ${colors.foreground}
+;click-left = bash -c 'maim "$HOME/Imagens/Captura de tela de %d-%m-%Y %H:%M:%S.png"' &
+;click-left = bash -c 'scrot "$HOME/Imagens/screenshots/Captura de tela de %d-%m-%Y %H:%M:%S.png"' ; notify-send "Captura de tela realizada" &
+click-left = bash -c 'scrot "$HOME/Imagens/screenshots/%d-%m-%Y %H:%M:%S.png"' && notify-send "Captura de tela realizada" &
+;click-left = $HOME/Scripts/screenshot.sh &
+
+[module/lock]
+type = custom/text
+content = "  "
+content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+#click-left = betterlockscreen -l blur -t "Digite a senha..."
+click-left = xsecurelock
+
+[module/upinfo-arch]
+type = custom/script
+exec = ~/.config/polybar/scripts/upinfo-arch.sh
+interval = 600
+
+[module/pacman]
+type = custom/script
+interval = 1
+exec = pacman -Qq | wc -l
+label = "%{F${colors.foreground}  %{F-} %output:0:37:...%"
+;format-underline = ${colors.foreground}
+;format-background = ${colors.foreground}
+
+[module/news-archlinux]
+type = custom/script
+exec = ~/.config/polybar/scripts/news-archlinux.py
+interval = 600
+click-left = firefox https://www.archlinux.org/ &
+
+[module/kernel]
+type = custom/script
+exec = uname -r
+label = "%{F#${colors.foreground}  %{F-} %output:0:37:...%"
+;format-underline = ${colors.foreground}
+
+[module/player-mpris-tail]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}'
+tail = true
+click-left = $HOME/.config/polybar/scripts/player-mpris-tail.py previous &
+click-right = $HOME/.config/polybar/scripts/player-mpris-tail.py next &
+click-middle = $HOME/.config/polybar/scripts/player-mpris-tail.py play-pause &
+
+#
+#
+#
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = "  "
+format = <label>
+exec = python $HOME/.config/polybar/scripts/spotify_status.py -f '{song} - {artist}'
+format-underline = #1db954
+
+#
+#
+#
+
+[module/bluetooth]
+type = custom/text
+;content = "  "
+content = "  "
+content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec blueman-applet &
+click-right = exec blueman-manager &
+
+[module/net]
+type = custom/script
+interval = 0.1
+label = %output%
+exec = ~/.config/polybar/scripts/checknet.sh
+tail = true
+
+[module/pywall1]
+type = custom/text
+content = "%{F${colors.foreground}  %{F-}"
+click-left = exec wal -i ~/Imagens/ --iterative &
+
+;
+;
+;
+
+[module/wifi]
+type = custom/text
+content = "  "
+content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec i3-sensible-terminal -e nmtui  &
+
+[module/rede]
+type = internal/network
+interface = enp3s0
+interval = 0.1
+
+format-packetloss = <animation-packetloss>
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = Conectado
+label-connected-foreground = #64ff33
+label-disconnected = Desconectado
+label-disconnected-foreground = #fe2020
+
+[module/wireless]
+type = internal/network
+interface = wlp2s0
+interval = 0.1
+
+format-packetloss = <animation-packetloss>
+format-connected = <ramp-signal>
+format-disconnected = <label-disconnected>
+;label-connected = Conectado
+label-connected-foreground = #3dff00
+label-disconnected = Desconectado
+label-disconnected-foreground = #ff0000
+
+ramp-signal-0 = 
+ramp-signal-0-foreground = #fe3823
+ramp-signal-1 = 
+ramp-signal-1-foreground = #ecf91c
+ramp-signal-2 = 
+ramp-signal-2-foreground = #55ff00
+;ramp-signal-3 = 
+;ramp-signal-3-foreground = #D8DE72
+;ramp-signal-4 = 
+;ramp-signal-4-foreground = #BADE72
+;ramp-signal-5 = 
+;ramp-signal-5-foreground = #96DE72
