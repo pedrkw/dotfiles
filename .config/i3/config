@@ -236,3 +236,9 @@ client.background       $bg
 exec_always $HOME/.fehbg
 
 exec_always $HOME/.config/polybar/launch.sh
+
+exec_always flameshot
+
+exec --no-startup-id numlockx on
+
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
