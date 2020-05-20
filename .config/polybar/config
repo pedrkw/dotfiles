@@ -180,7 +180,7 @@ separator = |
 #################################################################
 
 modules-left = linux powermenu refresh upinfo-arch lock print
-modules-center = firefox terminal menu manager telegram
+modules-center = chrome terminal menu manager telegram
 modules-right = kernel user 
 
 ;modules-left = user pywall1 pywall2 pywall3 kernel 
@@ -531,6 +531,14 @@ content-foreground = #F2A65A
 ;content-underline = ${colors.foreground}
 click-left = exec firefox &
 
+[module/chrome]
+type = custom/text
+content = "  "
+content-foreground = #85C1E9
+;content-foreground = ${colors.foreground}
+;content-underline = ${colors.foreground}
+click-left = exec chromium &
+
 [module/telegram]
 type = custom/text
 content = "  "
@@ -565,7 +573,7 @@ content = "%{F${colors.foreground}  %{F-} Olá, OniiChan"
 type = custom/text
 content = "%{F${colors.foreground}%{F-} Arch Linux"
 ;content-underline = ${colors.foreground}
-click-left = firefox https://www.archlinux.org/ &
+click-left = chromium https://www.archlinux.org/ &
 
 [module/popup-calendar]
 type = custom/script
@@ -626,7 +634,8 @@ label = "%{F${colors.foreground}  %{F-} %output:0:37:...%"
 type = custom/script
 exec = ~/.config/polybar/scripts/news-archlinux.py
 interval = 600
-click-left = firefox https://www.archlinux.org/ &
+;click-left = firefox https://www.archlinux.org/ &
+click-left = chromium https://www.archlinux.org/ &
 
 [module/kernel]
 type = custom/script
