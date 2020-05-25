@@ -6,15 +6,16 @@ NC='\033[0m'
      echo -e "     ${RED}by @pedrkw ( Telegram )                     ${NC}"
      echo -e "     ${RED}Em caso de dúvidas acesse archlinux.org     ${NC}"
      echo -e "     ${RED}Iniciando script...                         ${NC}"
-clear
-
+sleep 10
      echo -e "     ${RED}Iniciando configuração, aguarde...${NC}     "
 loadkeys br-abnt2
 sed -i  '/pt_BR/,+1 s/^#//' /etc/locale.gen
 locale-gen
 timedatectl set-ntp true
+clear
        echo -e "     ${RED}Parte inicial executada com sucesso${NC}     "
        echo -e "     ${RED}Dando inicio no particionador e continuando o script...${NC}     "
+       echo -e "     Pressione a tecla ${RED}ENTER${NC} para continuar...                           "
 cfdisk
 lsblk
        echo "Informe as devidas partições"
@@ -45,15 +46,17 @@ mount $root /mnt
 mkdir /mnt/home
 mount $home /mnt/home
         echo "Montagem concluída"
+sleep 05
 clear
         echo -e "     ${RED}Iniciando a instalação dos pacotes essenciais${NC}     "
-pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub neofetch gvfs gvfs-mtp alsa-utils alsa-oss alsa-lib pulseaudio-alsa pavucontrol xdg-user-dirs gufw noto-fonts ttf-ubuntu-font-family ttf-dejavu gnu-free-fonts ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome xorg-server xorg-xinit  xorg-apps reflector git 
+pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub neofetch bash-completion xdg-user-dirs noto-fonts ttf-ubuntu-font-family ttf-dejavu gnu-free-fonts ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome reflector git 
 
          echo -e "     ${RED}Comando pacstrap executado com sucesso${NC}           "
          echo "Gerando fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
          echo "Fstab gerado com sucesso"
 cat /mnt/etc/fstab
+sleep 05
 clear
          echo -e "     ${RED}Entrando em arch-chroot${NC}     "
          echo -e "     ${RED}Pode demorar um pouco, então agurade...${NC}     "
@@ -65,7 +68,7 @@ arch-chroot /mnt /bin/bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/locale.conf"
 arch-chroot /mnt /bin/bash -c "echo 'archlinux' >> /etc/hostname"
 arch-chroot /mnt /bin/bash -c "echo 'KEYMAP=br-abnt2' > /etc/vconsole.conf"
 arch-chroot /mnt /bin/bash -c "echo '127.0.0.1 localhost.localdomain localhost' >> /etc/hosts"
-arch-chroot /mnt /bin/bash -c "echo ''::1 localhost.localdomain localhost' >> /etc/hosts"
+arch-chroot /mnt /bin/bash -c "echo '::1 localhost.localdomain localhost' >> /etc/hosts"
 arch-chroot /mnt /bin/bash -c "echo '127.0.1.1 archlinux.localdomain' >> /etc/hosts"
 arch-chroot /mnt /bin/bash -c "echo 'nameserver 1.1.1.1' >> /etc/resolv.conf"
 arch-chroot /mnt /bin/bash -c "echo 'nameserver 8.8.8.8' >> /etc/resolv.conf"
