@@ -25,6 +25,7 @@
  
 ## Arch
 `I use Arch Linux`
+
 `Note:` 
 Some scripts used in polybar depend on extra packages.
 I use arch linux, so some settings on the polybar were made exclusively for this use.
