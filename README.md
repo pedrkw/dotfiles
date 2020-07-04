@@ -3,18 +3,26 @@
 
 
 
-|   Dependencies        |  Description                                                |
+|   Programs I use      |  Description                                                |
 | :---                  |     :---:                                                   |
-| `bspwm` \ `i3-gaps`   | Window manager                                              |
+| `i3-gaps`             | Window manager                                              |
 | `polybar`             | Status bar                                                  |
-| `rofi`                | Window switcher, application launcher and dmenu replacement |
+| `rofi`                | Application launcher                                        |
 | `pywal`               | Generate and change color-schemes on the fly                |
-| `feh`                 | Image viewer and Cataloguer                                 |
-| `rxvt-unicode`        | customizable terminal emulator forked from rxvt             |
-| `mpv`                 | multimidia player                                           |
-| `dunst`               | lightweight replacement for the notification-daemons        |
-| `atom/vim`            | code and text editor                                        |
+| `rxvt-unicode/kitty`  | Terminal                                                    |
+| `mpv`                 | Multimidia player                                           |
+| `dunst`               | Notification-daemons                                        |
+| `pcmanfm`             | File manager                                                |
+| `viewnior`            | Image view                                                  |
+| `chromium`            | Browser                                                     |
+| `vscode` / `vim`      | Text editor                                                 |
+| `transmission`        | BitTorrent client                                           |
+| `flameshot` / `scrot` | Screenshot progam                                           |
+| `feh`                 | Image view and set wallpaper                                |
 
+ 
 ## Arch
 `I use Arch Linux`
-*Copy the configuration files to the appropriate places*
+`Note:` 
+Some scripts used in polybar depend on extra packages.
+I use arch linux, so some settings on the polybar were made exclusively for this use.
