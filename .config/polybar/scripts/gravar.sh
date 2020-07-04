@@ -6,7 +6,7 @@
 
 resolucao=$(xrandr | grep '*' | awk 'NR==1{print $1}')
 if [ ! $1 ]; then
-    local="$HOME/Vídeos/Screencast"
+    local="$HOME/Vídeos/Gravação"
     nome="$(date "+%Y-%m-%d--%H-%M-%S")"
     arquivo="${local}screencast-${nome}.mp4"
 fi

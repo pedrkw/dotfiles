@@ -17,14 +17,14 @@
 #                             CORES                             #
 #################################################################
 
-[colors]
-background = #282c34
-foreground = #abb2bf
-background-alt = #444
-foreground-alt = #444
-primary = ${colors.background}
-secondary = ${colors.foreground}
-alert = #f73939
+;[colors]
+;background = #282c34
+;foreground = #abb2bf
+;background-alt = #444
+;foreground-alt = #444
+;primary = ${colors.background}
+;secondary = ${colors.foreground}
+;alert = #f73939
 
 ##############################################3
 
@@ -34,6 +34,14 @@ alert = #f73939
 ;primary = ${xrdb:color1:#222}
 ;secondary = ${xrdb:color2:#222}
 ;alert = #f73939
+
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 #################################################################
 #                               Barra TOP                       #
@@ -59,8 +67,8 @@ line-size = 2
 line-color = #f00
 
 border-size = 1
-border-color = #545862
-;border-color = ${xrdb:color8:#222}
+;border-color = #545862
+border-color = ${xrdb:color8:#222}
 
 padding-left = 0
 padding-right = 1
@@ -148,8 +156,8 @@ line-size = 3
 line-color = #f00
 
 border-size = 1
-border-color = #545862
-;border-color = ${xrdb:color8:#222}
+;border-color = #545862
+border-color = ${xrdb:color8:#222}
 
 padding-left = 0
 padding-right = 1
@@ -180,7 +188,7 @@ separator = |
 #################################################################
 
 modules-left = linux powermenu refresh upinfo-arch lock print
-modules-center = chrome terminal menu manager telegram
+modules-center = chromium terminal menu manager telegram
 modules-right = kernel user 
 
 ;modules-left = user pywall1 pywall2 pywall3 kernel 
@@ -531,13 +539,13 @@ content-foreground = #F2A65A
 ;content-underline = ${colors.foreground}
 click-left = exec firefox &
 
-[module/chrome]
+[module/chromium]
 type = custom/text
 content = "  "
 content-foreground = #85C1E9
 ;content-foreground = ${colors.foreground}
 ;content-underline = ${colors.foreground}
-click-left = exec chromium &
+click-left = exec chromium &
 
 [module/telegram]
 type = custom/text
@@ -545,8 +553,8 @@ content = "  "
 content-foreground = #20A4F3
 ;content-foreground = ${colors.foreground}
 ;content-underline = ${colors.foreground}
-click-left = exec telegram &
-;click-left = exec telegram-desktop &
+;click-left = exec telegram &
+click-left = exec telegram-desktop &
 
 [module/terminal]
 type = custom/text
@@ -554,7 +562,8 @@ content = "  "
 content-foreground = #CCE6F4
 ;content-foreground = ${colors.foreground}
 ;content-underline = ${colors.foreground}
-click-left = exec urxvt &
+;click-left = exec urxvt &
+click-left = exec kitty &
 
 [module/manager]
 type = custom/text
@@ -573,7 +582,7 @@ content = "%{F${colors.foreground}  %{F-} Olá, OniiChan"
 type = custom/text
 content = "%{F${colors.foreground}%{F-} Arch Linux"
 ;content-underline = ${colors.foreground}
-click-left = chromium https://www.archlinux.org/ &
+click-left = firefox https://www.archlinux.org/ &
 
 [module/popup-calendar]
 type = custom/script
@@ -608,6 +617,14 @@ content = "%{F${colors.foreground}  %{F-}"
 ;click-left = bash -c 'scrot "$HOME/Imagens/screenshots/Captura de tela de %d-%m-%Y %H:%M:%S.png"' ; notify-send "Captura de tela realizada" &
 click-left = bash -c 'scrot "$HOME/Imagens/screenshots/%d-%m-%Y %H:%M:%S.png"' && notify-send "Captura de tela realizada" &
 ;click-left = $HOME/Scripts/screenshot.sh &
+
+[module/gravar]
+type = custom/script
+interval = 0.1
+label = %output%
+click-left = kitty ~/.config/polybar/scripts/gravar.sh &
+exec = ~/.config/polybar/scripts/gravar.sh status
+tail = true
 
 [module/lock]
 type = custom/text
@@ -646,6 +663,7 @@ label = "%{F#${colors.foreground}  %{F-} %output:0:37:...%"
 [module/player-mpris-tail]
 type = custom/script
 exec = $HOME/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}'
+#exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:]~/.config/polybar/scripts/player-mpris-tail.py previous -b vlc -b plasma-browser-integration:} ⏮ %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py play-pause -b vlc -b plasma-browser-integration:} {icon-reversed} %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py next -b vlc -b plasma-browser-integration:} ⏭ %{A}' -b vlc -b plasma-browser-integration
 tail = true
 click-left = $HOME/.config/polybar/scripts/player-mpris-tail.py previous &
 click-right = $HOME/.config/polybar/scripts/player-mpris-tail.py next &
