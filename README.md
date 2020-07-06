@@ -14,7 +14,7 @@
 | `dunst`               | Notification-daemons                                        |
 | `pcmanfm`             | File manager                                                |
 | `viewnior`            | Image view                                                  |
-| `chromium`            | Browser                                                     |
+| `firefox`            | Browser                                                     |
 | `vscode` / `vim`      | Text editor                                                 |
 | `transmission`        | BitTorrent client                                           |
 | `flameshot` / `scrot` | Screenshot progam                                           |
