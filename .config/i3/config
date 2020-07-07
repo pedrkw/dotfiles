@@ -216,6 +216,7 @@ client.background       $bg
 #}
 
 # Iniciar com o sistema
+
 exec_always $HOME/.fehbg
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
