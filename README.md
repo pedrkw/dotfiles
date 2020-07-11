@@ -22,6 +22,9 @@
 
 ## My i3-gaps personalization
 <img src="Imagens/screenshots/i3config.png">
+
+## My bspwm personalization
+<img src="Imagens/screenshots/bspwmconfig.png">
  
 ## Arch
 `I use Arch Linux`
