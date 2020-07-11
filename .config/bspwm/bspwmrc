@@ -64,7 +64,7 @@ bspc rule -a Pavucontrol state=floating follow=off
 bspc rule -a Atril state=floating follow=off
 bspc rule -a Gnome-calculator state=floating follow=off
 bspc rule -a Feh state=floating follow=off
-bspc rule -a Alacritty state=floating follow=off
+bspc rule -a Kitty state=floating follow=off
 
 
 
