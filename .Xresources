@@ -106,7 +106,7 @@ UXterm*internalBorder: 80
 
 UXterm*cursor.size: 12
 
-URxvt*font: xft:Source Code Pro:pixelsize=13:antialiasing=true:size=12
+URxvt*font: xft:Jetbrains Mono:pixelsize=13:antialiasing=true:size=12
 URxvt*letterspace: 0
 URxvt*scrollBar: false
 URxvt.intensityStyles: false
@@ -118,11 +118,11 @@ URxvt.termName: rxvt-256color
 URxvt.buffered: false
 URxvt*fading:30
 
-URxvt.cursorColor:  #e06c75
-URxvt.pointerColor: #61afef
-URxvt.background:   #282c34
-URxvt.foreground:   #c8ccd4
-URxvt.colorUL: #abb2bf
+!URxvt.cursorColor:  #e06c75
+!URxvt.pointerColor: #61afef
+!URxvt.background:   #282c34
+!URxvt.foreground:   #c8ccd4
+!URxvt.colorUL: #abb2bf
 
 Xft.dpi: 96
 Xft.antialias: true
