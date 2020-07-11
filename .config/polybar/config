@@ -51,10 +51,10 @@ alert = ${xrdb:color3:#222}
 ;monitor = ${env:MONITOR:eDP1}
 # Set false to use the bar on top
 bottom = false
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
+width = 96%
+height = 25
+offset-x = 2%
+offset-y = 1%
 radius = 0
 fixed-center = true
 
@@ -66,7 +66,7 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = #f00
 
-border-size = 1
+border-size = 0
 ;border-color = #545862
 border-color = ${xrdb:color8:#222}
 
@@ -101,22 +101,24 @@ separator = |
 
 modules-left = i3 bspwm
 modules-center = player-mpris-tail title
-modules-right = pavucontrol pulseaudio net popup-calendar date cpu memory
+modules-right = pulseaudio net popup-calendar date powermenu upinfo-arch
 
-
+;modules-left = i3 bspwm
+;modules-center = player-mpris-tail title
+;modules-right = pavucontrol pulseaudio net popup-calendar date cpu memory
 #################################################################
 #                         TRAY BAR TOP                          #
 #################################################################
 
-;tray-position = right
-;tray-detached = false
-;tray-maxsize = 12
-;tray-padding = 4
-;tray-scale = 1.0
-;tray-transparent = false
+tray-position = right
+tray-detached = false
+tray-maxsize = 12
+tray-padding = 4
+tray-scale = 1.0
+tray-transparent = false
 ;tray-offset-x = 1
 ;tray-offset-y = 1
-;tray-background = ${colors.background}
+tray-background = ${colors.background}
 
 #################################################################
 #                        OPTIONS IGNORE                         #
@@ -125,8 +127,8 @@ modules-right = pavucontrol pulseaudio net popup-calendar date cpu memory
 ;wm-restack = bspwm
 ;wm-restack = i3
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -142,20 +144,20 @@ cursor-scroll = ns-resize
 ;monitor = ${env:MONITOR:eDP1}
 # Set false to use the bar on top
 bottom = true
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
+width = 96%
+height = 25
+offset-x = 2%
+offset-y = 1%
 radius = 0
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 2
 line-color = #f00
 
-border-size = 1
+border-size = 0
 ;border-color = #545862
 border-color = ${xrdb:color8:#222}
 
@@ -188,7 +190,7 @@ separator = |
 #################################################################
 
 modules-left = linux powermenu refresh upinfo-arch
-modules-center = firefox terminal menu manager telegram
+modules-center = player-mpris-tail title
 modules-right = lock print xkeyboard kernel 
 
 ;modules-left = user pywall1 pywall2 pywall3 kernel 
@@ -204,7 +206,7 @@ tray-detached = false
 tray-maxsize = 12
 tray-padding = 4
 tray-scale = 1.0
-tray-transparent = false
+;tray-transparent = false
 ;tray-offset-x = 1
 ;tray-offset-y = 1
 tray-background = ${colors.background}
@@ -268,22 +270,22 @@ label-indicator-underline = ${xrdb:color5:#222}
 type = internal/bspwm
 
 label-focused = %index%
-;label-focused-background = ${xrdb:color8:#222}
-;label-focused-underline= ${xrdb:color7:#222}
-label-focused-underline= #abb2bf
+;label-focused-background = ${xrdb:color6:#222}
+label-focused-underline= ${xrdb:color7:#222}
+;label-focused-underline= #abb2bf
 label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
 
 label-urgent = %index%!
-;label-urgent-background = ${xrdb:color7:#222}
-label-urgent-background = #abb2bf
+label-urgent-background = ${xrdb:color4:#222}
+;label-urgent-background = #abb2bf
 label-urgent-padding = 2
 
 label-empty = %index%
-;label-empty-foreground = ${xrdb:color3:#222}
-label-empty-foreground = #e5c07b
+label-empty-foreground = ${xrdb:color3:#222}
+;label-empty-foreground = #e5c07b
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -428,7 +430,7 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${xrdb:color6:#222}
+format-prefix-foreground = ${xrdb:color7:#222}
 ;format-prefix-foreground = #b4c8ca
 #format-underline = #778da9
 
@@ -442,7 +444,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
+label-volume = 墳 %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
@@ -453,10 +455,10 @@ bar-volume-width = 10
 bar-volume-foreground-0 = ${xrdb:color3:#222}
 bar-volume-foreground-1 = ${xrdb:color3:#222}
 bar-volume-foreground-2 = ${xrdb:color3:#222}
-bar-volume-foreground-3 = ${xrdb:color5:#222}
-bar-volume-foreground-4 = ${xrdb:color5:#222}
-bar-volume-foreground-5 = ${xrdb:color4:#222}
-bar-volume-foreground-6 = ${xrdb:color4:#222}
+bar-volume-foreground-3 = ${xrdb:color6:#222}
+bar-volume-foreground-4 = ${xrdb:color6:#222}
+bar-volume-foreground-5 = ${xrdb:color9:#222}
+bar-volume-foreground-6 = ${xrdb:color9:#222}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -465,6 +467,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+click-right = exec pavucontrol &
 
 #
 #
@@ -650,8 +653,8 @@ content = "%{F${colors.foreground}%{F-}  Caçar E-girl!!!"
 type = custom/text
 content = "  "
 content-foreground = ${colors.foreground}
-;click-left = bspc wm -r &
-click-left = i3-msg restart &
+click-left = bspc wm -r &
+;click-left = i3-msg restart &
 
 #
 #
