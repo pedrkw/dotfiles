@@ -3,22 +3,22 @@
 
 
 
-|   Programs I use      |  Description                                                |
-| :---                  |     :---:                                                   |
-| `i3-gaps`             | Window manager                                              |
-| `polybar`             | Status bar                                                  |
-| `rofi`                | Application launcher                                        |
-| `pywal`               | Generate and change color-schemes on the fly                |
-| `rxvt-unicode/kitty`  | Terminal                                                    |
-| `mpv`                 | Multimidia player                                           |
-| `dunst`               | Notification-daemons                                        |
-| `pcmanfm`             | File manager                                                |
-| `viewnior`            | Image view                                                  |
-| `firefox`            | Browser                                                     |
-| `vscode` / `vim`      | Text editor                                                 |
-| `transmission`        | BitTorrent client                                           |
-| `flameshot` / `scrot` | Screenshot progam                                           |
-| `feh`                 | Image view and set wallpaper                                |
+|   Programs I use       |   Description                                               |
+| :---                   |     :---:                                                   |
+| `i3-gaps`              | Window manager                                              |
+| `polybar`              | Status bar                                                  |
+| `rofi`                 | Application launcher                                        |
+| `pywal`                | Generate and change color-schemes on the fly                |
+| `rxvt-unicode / kitty` | Terminal                                                    |
+| `mpv`                  | Multimidia player                                           |
+| `dunst`                | Notification-daemons                                        |
+| `pcmanfm`              | File manager                                                |
+| `viewnior`             | Image view                                                  |
+| `firefox`              | Browser                                                     |
+| `vscode` / `vim`       | Text editor                                                 |
+| `transmission`         | BitTorrent client                                           |
+| `flameshot` / `scrot`  | Screenshot progam                                           |
+| `feh`                  | Image view and set wallpaper                                |
 
 ## My i3-gaps personalization
 <img src="Imagens/screenshots/i3config.png">
