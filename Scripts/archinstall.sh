@@ -71,7 +71,8 @@ elif [ $opcao == "2" ];
  mkfs.ext4 $root
  mkfs.ext4 $home
  mkswap $swap
- swapon $swap mount $root /mnt
+ swapon $swap 
+ mount $root /mnt
  mkdir /mnt/home
  mount $home /mnt/home
 fi
