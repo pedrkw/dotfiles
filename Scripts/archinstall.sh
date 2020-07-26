@@ -98,9 +98,9 @@ elif [ $opcao == "2" ];
 fi
 clear
 echo -e "${RED}Comando pacstrap executado com sucesso${NC}"
-echo "Gerando fstab..."
+echo -e "Gerando fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
-echo "Fstab gerado com sucesso"
+echo -e "Fstab gerado com sucesso"
 cat /mnt/etc/fstab
 sleep 05
 clear
