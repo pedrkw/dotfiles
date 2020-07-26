@@ -89,10 +89,12 @@ if [ $opcao == "1" ];
  then
  echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\n de respeitar os espaços entre os pacotes "
  read pacotes
+ echo -e "Executando pacstrap..."
  pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub $pacotes
 elif [ $opcao == "2" ];
  then
- echo -e "Prosseguindo o script..."
+ echo -e "Prosseguindo o script... executando pacstrap"
+ pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub
 fi
 clear
 echo -e "${RED}Comando pacstrap executado com sucesso${NC}"
