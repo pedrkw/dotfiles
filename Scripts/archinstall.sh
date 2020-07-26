@@ -37,20 +37,17 @@ elif [ $opcao == "2" ];
  echo "Prosseguindo o script..."
 fi
 clear
-echo -e "Informe o caminho da partição swap ?"
-echo -e "Selecione uma opção (digite apenas o número que corresponde a opção desejada):"
+echo -e "Informe o caminho da partição swap"
  lsblk
  echo -e "Informe qual a partição. Ex: (/dev/sda1)"
  read swap
 clear
-echo -e "Informe o caminho da partição / ?"
-echo -e "Selecione uma opção (digite apenas o número que corresponde a opção desejada):"
+echo -e "Informe o caminho da partição /"
  lsblk
  echo -e "Informe qual a partição. Ex: (/dev/sda2)"
  read root
 clear
-echo -e "Informe o caminho da partição /home ?"
-echo -e "Selecione uma opção (digite apenas o número que corresponde a opção desejada):"
+echo -e "Informe o caminho da partição /home"
  lsblk
  echo -e "Informe qual a partição. Ex: (/dev/sda3)"
  read home
