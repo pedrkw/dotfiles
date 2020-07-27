@@ -12,6 +12,7 @@ sleep 05
 loadkeys br-abnt2
 sed -i  '/pt_BR.UTF-8/ s/^#//' /etc/locale.gen
 locale-gen
+export LANG=pt_BR.UTF-8
 timedatectl set-ntp true
 clear
 echo -e "${RED}Parte inicial executada com sucesso${NC}"
