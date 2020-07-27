@@ -37,18 +37,18 @@ elif [ $opcao == "2" ];
  echo "Prosseguindo o script..."
 fi
 clear
-echo -e "Informe o caminho da partição swap"
  lsblk
+ echo -e "Informe o caminho da partição ${RED}SWAP${NC}"
  echo -e "Informe qual a partição. Ex: (/dev/sda1)"
  read swap
 clear
-echo -e "Informe o caminho da partição /"
  lsblk
+ echo -e "Informe o caminho da partição ${RED}ROOT${NC}"
  echo -e "Informe qual a partição. Ex: (/dev/sda2)"
  read root
 clear
-echo -e "Informe o caminho da partição /home"
  lsblk
+ echo -e "Informe o caminho da partição ${RED}HOME${NC}"
  echo -e "Informe qual a partição. Ex: (/dev/sda3)"
  read home
 clear
@@ -66,6 +66,12 @@ if [ $opcao == "1" ];
  mount $root /mnt
  mkdir /mnt/home
  mount $home /mnt/home
+ echo -e "Iniciando a instalação dos pacotes essenciais"
+ echo -e "Por padrão esses serão os pacotes a serem instalados:\n${RED}base base-devel linux linux-firmware dhcpcd vim grub btrfs-progs${NC}"
+ echo -e "Caso queira adicionar outros pacotes faça agora/nSe não quiser, apenas aperte ${RED}ENTER${NC} para prosseguir"
+ echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\n de respeitar os espaços entre os nomes dos pacotes" 
+ read pacotes
+ pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub btrfs-progs $pacotes
 elif [ $opcao == "2" ];
  then
  mkfs.ext4 $root
@@ -75,26 +81,12 @@ elif [ $opcao == "2" ];
  mount $root /mnt
  mkdir /mnt/home
  mount $home /mnt/home
-fi
-clear
-echo -e "Iniciando a instalação dos pacotes essenciais"
-echo -e "Por padrão esses serão os pacotes a serem instalados:\n${RED}base base-devel linux linux-firmware dhcpcd vim grub${NC}"
-echo -e "Se você deseja adicionar pacotes extras, selecione a opção ${RED}SIM${NC}"
-echo -e "Se não quiser adicionar pacotes extras, selecione a opção ${RED}NÃO${NC}"
-echo -e "Selecione uma opção (digite apenas o número que corresponde a opção desejada):"
-echo "1 - Sim, quero adicionar pacotes extras"
-echo "2 - Não, não quero adicionar pacotes extras"
-read opcao;
-if [ $opcao == "1" ];
- then
- echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\n de respeitar os espaços entre os pacotes "
+ echo -e "Iniciando a instalação dos pacotes essenciais"
+ echo -e "Por padrão esses serão os pacotes a serem instalados:\n${RED}base base-devel linux linux-firmware dhcpcd vim grub${NC}"
+ echo -e "Caso queira adicionar outros pacotes faça agora/nSe não quiser, apenas aperte ${RED}ENTER${NC} para prosseguir"
+ echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\n de respeitar os espaços entre os nomes dos pacotes" 
  read pacotes
- echo -e "Executando pacstrap..."
  pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub $pacotes
-elif [ $opcao == "2" ];
- then
- echo -e "Prosseguindo o script... executando pacstrap"
- pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub
 fi
 clear
 echo -e "${RED}Comando pacstrap executado com sucesso${NC}"
@@ -111,7 +103,7 @@ ls /usr/share/zoneinfo/America/
 read zone
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/$zone /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
-arch-chroot /mnt /bin/bash -c "sed -i  '/pt_BR.UTF-8/ s/^#//' /etc/locale.gen"
+arch-chroot /mnt /bin/bash -c "sed -i '/pt_BR.UTF-8/ s/^#//' /etc/locale.gen"
 arch-chroot /mnt /bin/bash -c "locale-gen"
 arch-chroot /mnt /bin/bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/locale.conf"
 echo -e "Digite a seguir o ${RED}HOSTNAME${NC} (nome da maquina)"
@@ -124,6 +116,7 @@ arch-chroot /mnt /bin/bash -c "echo '127.0.1.1 archlinux.localdomain' >> /etc/ho
 arch-chroot /mnt /bin/bash -c "echo 'nameserver 1.1.1.1' >> /etc/resolv.conf"
 arch-chroot /mnt /bin/bash -c "echo 'nameserver 8.8.8.8' >> /etc/resolv.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd"
+clear
 echo -e "Digite o ${RED}nome do seu usuário${NC}"
 read user
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -G wheel -s /bin/bash $user"
