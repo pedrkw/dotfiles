@@ -92,9 +92,8 @@ clear
 echo -e "${RED}Comando pacstrap executado com sucesso${NC}"
 echo -e "Gerando fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
-echo -e "Fstab gerado com sucesso"
 cat /mnt/etc/fstab
-sleep 05
+sleep 04
 clear
 echo -e "${RED}Entrando em arch-chroot${NC}"
 echo -e "Escolha a região mais adequada para definir o fuso horário"
