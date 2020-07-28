@@ -70,8 +70,8 @@ if [ $opcao == "1" ];
  mount $home /mnt/home
  echo -e "Iniciando a instalação dos pacotes essenciais"
  echo -e "Por padrão esses serão os pacotes a serem instalados:\n${RED}base base-devel linux linux-firmware dhcpcd vim grub btrfs-progs${NC}"
- echo -e "Caso queira adicionar outros pacotes faça agora/nSe não quiser, apenas aperte ${RED}ENTER${NC} para prosseguir"
- echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\n de respeitar os espaços entre os nomes dos pacotes" 
+ echo -e "Caso queira adicionar outros pacotes faça agora\nSe não quiser, apenas aperte ${RED}ENTER${NC} para prosseguir"
+ echo -e "Digite os nomes ${RED}CORRETOS${NC} dos pacotes extras que você quer, lembre-se\nde respeitar os espaços entre os nomes dos pacotes" 
  read pacotes
  pacstrap /mnt base base-devel linux linux-firmware dhcpcd vim grub btrfs-progs $pacotes
 elif [ $opcao == "2" ];
