@@ -20,6 +20,10 @@ echo -e "${RED}Continuando o script...${NC}"
 echo -e "Pressione a tecla ${RED}ENTER${NC} para continuar..."
 read $tmp
 clear
+echo -e "Sincronizando espelhos usando o reflector, aguarde..."
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+clear
 echo -e "${RED}A T E N Ç Ã O :${NC}"
 echo -e "Esse script segue um certo padrão de particionamento\nao utilizar esse script você terá que ter uma partição /\numa partição /home\ne uma partição swap\n${RED}no futuro, serão adicionas novas possibilidades${NC}"
 echo -e "Ele lhe dá a possibilidade de utilizar EXT4 ou BTRFS como sistema de arquivos"
