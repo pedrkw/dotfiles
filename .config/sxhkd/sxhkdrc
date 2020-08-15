@@ -4,12 +4,7 @@
 
 # terminal emulator
 super + Return
-        kitty
-#	urxvt
-
-# super + u + v
-         kitty
-#        urxvt
+	kitty
 
 # program launcher
 super + @space
@@ -17,7 +12,6 @@ super + @space
        -modi drun \
        -combi-modi drun \
        -show drun
-#	rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -43,9 +37,9 @@ super + m
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
+# swap the current node and the biggest window
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.window
 
 #
 # state/flags
@@ -56,8 +50,7 @@ super + g
 #	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 super + {f,shift + f,t}
-   bspc node -t {fullscreen,floating,tiled}
-  
+    bspc node -t {fullscreen,floating,tiled}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -75,9 +68,9 @@ super + {_,shift + }{h,j,k,l}
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous node in the current desktop
+# focus the next/previous window in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
