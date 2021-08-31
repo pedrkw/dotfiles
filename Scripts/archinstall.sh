@@ -1,33 +1,104 @@
 #!/bin/bash
-timedatectl set-ntp true
-cp /etc/pacman.d/mirrorlist /etc/pacmand./mirrorlist.backup
-reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
-cfdisk -z /dev/sda
-mkfs.ext4 /dev/sda1
-mount /dev/sda1 /mnt
-pacstrap /mnt linux-zen linux-firmware base base-devel dhcpcd vim grub xorg-apps xorg-server xorg-xinit
-genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt /bin/bash -c "dd if=/dev/zero of=/swapfile bs=1MB count=4096 status=progress"
-arch-chroot /mnt /bin/bash -c "chmod 600 /swapfile"
-arch-chroot /mnt /bin/bash -c "mkswap /swapfile"
-arch-chroot /mnt /bin/bash -c "swapon /swapfile"
-arch-chroot /mnt /bin/bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+  timedatectl set-ntp true
+RED='\033[1;31m'
+NC='\033[0m'
+#cp /etc/pacman.d/mirrorlist /etc/pacmand./mirrorlist.backup
+#reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
+echo -e "${RED}Hey, don't forget to create UEFI partition..${NC}"
+ read $tmp
+  cfdisk -z /dev/sda
+echo -e "Hey, you wish go to other disk ?"
+ read $tmp
+  cfdisk -z /dev/sdb
+  clear
+echo -e "Hey, is that ${RED}right${NC} ?"
+  lsblk -f
+ read $tmp
+  clear
+  lvmdiskscan
+  pvcreate /dev/sda2
+  pvcreate /dev/sdb1
+  pvscan
+echo -e "Hey, is that ${RED}right${NC} ?"
+echo -e "Yes"
+echo -e "No"
+ read option;
+ if [ $option == "Yes" ];
+ then
+  vgcreate weeb /dev/sda2 /dev/sdb1
+ elif [ $option == "No" ];
+ then
+  exit
+ fi
+  vgs
+echo -e "Press ENTER"
+ read $tmp
+  lvcreate -l 100%FREE weeb -n wroot /dev/sda2
+  lvcreate -L 2G weeb -n wtmp /dev/sdb1
+  lvcreate -L 16G weeb -n wswap /dev/sdb1
+  lvcreate -L 35G weeb -n wvar /dev/sdb1
+  lvcreate -l 100%FREE weeb -n whdd /dev/sdb1
+echo -e "All are ${RED}okay${NC} ?"
+ read $tmp
+  clear
+  modprobe dm_mod
+  vgscan
+  vgchange -ay
+  mkfs.fat -F32 /dev/sda1
+  mkfs.ext4 /dev/weeb/wroot
+  mkfs.ext4 /dev/weeb/wtmp
+  mkfs.ext4 /dev/weeb/wvar
+  mkfs.ext4 /dev/weeb/whdd
+  mkswap /dev/weeb/wswap
+echo -e "-"
+  lsblk -f
+ read $tmp
+  swapon /dev/weeb/wswap
+  mount /dev/weeb/wroot /mnt
+  mkdir /mnt/boot
+  mkdir /mnt/boot/efi
+  mkdir /mnt/{var,mnt,tmp}
+  mkdir /mnt/mnt/hdd
+  mount /dev/sda1 /mnt/boot/efi
+  mount /dev/weeb/wtmp /mnt/tmp
+  mount /dev/weeb/wvar /mnt/var
+  mount /dev/weeb/whdd /mnt/mnt/hdd
+ sleep 05
+  clear
+echo -e "Is that right?"
+  lsblk -f
+echo -e ""
+ read $tmp
+  pacstrap /mnt linux linux-firmware base base-devel networkmanager neovim grub efibootmgr xorg-server xorg-xinit fish vi
+  genfstab -U /mnt >> /mnt/etc/fstab
+  cat /mnt/etc/fstab
+echo -e "Hey, honey, is right ?"
+ read $tmp
 arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
 arch-chroot /mnt /bin/bash -c "sed -i /en_US.UTF-8/ s/^#// /etc/locale.gen"
 arch-chroot /mnt /bin/bash -c "locale-gen"
 arch-chroot /mnt /bin/bash -c "echo -e LANG=en_US.UTF-8 > /etc/locale.conf"
-arch-chroot /mnt /bin/bash -c "echo -e volt >> /etc/hostname"
-arch-chroot /mnt /bin/bash -c "echo -e KEYMAP-br abnt2 >> /etc/vconsole.conf"
+arch-chroot /mnt /bin/bash -c "echo -e narberal >> /etc/hostname"
+arch-chroot /mnt /bin/bash -c "echo -e KEYMAP=br-abnt2 >> /etc/vconsole.conf"
 arch-chroot /mnt /bin/bash -c "echo -e 127.0.0.1 localhost >> /etc/hosts"
 arch-chroot /mnt /bin/bash -c "echo -e ::1 localhost >> /etc/hosts"
-arch-chroot /mnt /bin/bash -c "echo -e nameserver 8.8.8.8 >> /etc/resolv.conf"
-arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd"
-arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/bash pedrokw"
+arch-chroot /mnt /bin/bash -c "echo -e 127.0.1.1	narberal.localdomain	narberal"
+#arch-chroot /mnt /bin/bash -c "echo -e nameserver 8.8.8.8 >> /etc/resolv.conf"
+arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
+arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
+echo -e "${RED}Hey honey, chose your password${NC}"
 arch-chroot /mnt /bin/bash -c "passwd pedrokw"
+echo -e "${RED}Hey honey, chose your password (root account)${NC}"
 arch-chroot /mnt /bin/bash -c "passwd root"
-arch-chroot /mnt /bin/bash -c "pacman -S vi"
+#arch-chroot /mnt /bin/bash -c "pacman -S vi"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
-arch-chroot /mnt /bin/bash -c "grub-install /dev/sda"
+arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch_Linux_GRUB"
+echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
+ read $tmp
+arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
+echo -e "Heey, don't forget, ${RED}lvm${NC} module is important"
+ read $tmp
+arch-chroot /mnt /bin/bash -c "nvim /etc/default/grub"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
