@@ -36,8 +36,8 @@ echo -e "Press ENTER"
   lvcreate -l 100%FREE weeb -n wroot /dev/sda2
   lvcreate -L 2G weeb -n wtmp /dev/sdb1
   lvcreate -L 16G weeb -n wswap /dev/sdb1
-  lvcreate -L 35G weeb -n wvar /dev/sdb1
-  lvcreate -l 100%FREE weeb -n whdd /dev/sdb1
+  lvcreate -L 32G weeb -n wvar /dev/sdb1
+  lvcreate -l 300G weeb -n whdd /dev/sdb1
 echo -e "All are ${RED}okay${NC} ?"
  read $tmp
   clear
@@ -69,22 +69,25 @@ echo -e "Is that right?"
   lsblk -f
 echo -e ""
  read $tmp
-  pacstrap /mnt linux linux-firmware base base-devel networkmanager neovim grub efibootmgr xorg-server xorg-xinit fish vi
+  pacstrap /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2
   genfstab -U /mnt >> /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e "Hey, honey, is right ?"
  read $tmp
+ echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
+ read $tmp
+arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
 arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
 arch-chroot /mnt /bin/bash -c "sed -i /en_US.UTF-8/ s/^#// /etc/locale.gen"
 arch-chroot /mnt /bin/bash -c "locale-gen"
 arch-chroot /mnt /bin/bash -c "echo -e LANG=en_US.UTF-8 > /etc/locale.conf"
-arch-chroot /mnt /bin/bash -c "echo -e narberal >> /etc/hostname"
+arch-chroot /mnt /bin/bash -c "echo -e delta >> /etc/hostname"
 arch-chroot /mnt /bin/bash -c "echo -e KEYMAP=br-abnt2 >> /etc/vconsole.conf"
-arch-chroot /mnt /bin/bash -c "echo -e 127.0.0.1 localhost >> /etc/hosts"
-arch-chroot /mnt /bin/bash -c "echo -e ::1 localhost >> /etc/hosts"
-arch-chroot /mnt /bin/bash -c "echo -e 127.0.1.1	narberal.localdomain	narberal"
+#arch-chroot /mnt /bin/bash -c "echo -e 127.0.0.1 localhost >> /etc/hosts"
+#arch-chroot /mnt /bin/bash -c "echo -e ::1 localhost >> /etc/hosts"
+#arch-chroot /mnt /bin/bash -c "echo -e 127.0.1.1	narberal.localdomain	rubedo"
 #arch-chroot /mnt /bin/bash -c "echo -e nameserver 8.8.8.8 >> /etc/resolv.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
@@ -95,9 +98,9 @@ arch-chroot /mnt /bin/bash -c "passwd root"
 #arch-chroot /mnt /bin/bash -c "pacman -S vi"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
 arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Arch_Linux_GRUB"
-echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
- read $tmp
-arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
+#echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
+# read $tmp
+#arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module is important"
  read $tmp
 arch-chroot /mnt /bin/bash -c "nvim /etc/default/grub"
