@@ -37,7 +37,7 @@ echo -e "Press ENTER"
   lvcreate -L 2G weeb -n wtmp /dev/sdb1
   lvcreate -L 16G weeb -n wswap /dev/sdb1
   lvcreate -L 32G weeb -n wvar /dev/sdb1
-  lvcreate -l 300G weeb -n whdd /dev/sdb1
+  lvcreate -L 300G weeb -n whdd /dev/sdb1
 echo -e "All are ${RED}okay${NC} ?"
  read $tmp
   clear
@@ -76,7 +76,7 @@ echo -e "Hey, honey, is right ?"
  read $tmp
  echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
  read $tmp
-arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
+arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
 arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
@@ -103,5 +103,5 @@ arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=
 #arch-chroot /mnt /bin/bash -c "nvim /etc/mkinitcpio.conf"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module is important"
  read $tmp
-arch-chroot /mnt /bin/bash -c "nvim /etc/default/grub"
+arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
