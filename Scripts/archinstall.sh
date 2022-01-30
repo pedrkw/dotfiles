@@ -7,12 +7,15 @@ NC='\033[0m'
 echo -e "${RED}Hey, don't forget to create UEFI partition..${NC}"
  read $tmp
   cfdisk -z /dev/sda
+echo
 echo -e "Hey, you wish go to other disk ?"
  read $tmp
   cfdisk -z /dev/sdb
   clear
 echo -e "Hey, is that ${RED}right${NC} ?"
+echo
   lsblk -f
+echo
  read $tmp
   clear
   lvmdiskscan
