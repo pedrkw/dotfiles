@@ -40,7 +40,7 @@ echo -e "Press ENTER"
   lvcreate -L 2G weeb -n wtmp /dev/sdb1
   lvcreate -L 16G weeb -n wswap /dev/sdb1
   lvcreate -L 32G weeb -n wvar /dev/sdb1
-  lvcreate -L 300G weeb -n whome /dev/sdb1
+  lvcreate -L 300G weeb -n whdd /dev/sdb1
 echo -e "All are ${RED}okay${NC} ?"
  read $tmp
   clear
@@ -51,7 +51,7 @@ echo -e "All are ${RED}okay${NC} ?"
   mkfs.ext4 /dev/weeb/wroot
   mkfs.ext4 /dev/weeb/wtmp
   mkfs.ext4 /dev/weeb/wvar
-  mkfs.ext4 /dev/weeb/whome
+  mkfs.ext4 /dev/weeb/whdd
   mkswap /dev/weeb/wswap
 echo -e "-"
   lsblk -f
@@ -61,11 +61,11 @@ echo -e "-"
   mkdir /mnt/boot
   mkdir /mnt/boot/efi
   mkdir /mnt/{var,tmp}
-  mkdir /mnt/home
+  mkdir /mnt/hdd
   mount /dev/sda1 /mnt/boot/efi
   mount /dev/weeb/wtmp /mnt/tmp
   mount /dev/weeb/wvar /mnt/var
-  mount /dev/weeb/whome /mnt/home
+  mount /dev/weeb/whdd /mnt/hdd
  sleep 05
   clear
 echo -e "Is that right?"
