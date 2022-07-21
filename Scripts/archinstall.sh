@@ -38,7 +38,7 @@ echo -e "Press ENTER"
  read $tmp
   lvcreate -l 100%FREE weeb -n wroot /dev/sda2
   lvcreate -L 2G weeb -n wtmp /dev/sdb1
-  lvcreate -L 16G weeb -n wswap /dev/sdb1
+  lvcreate -L 8G weeb -n wswap /dev/sdb1
   lvcreate -L 32G weeb -n wvar /dev/sdb1
   lvcreate -L 300G weeb -n whdd /dev/sdb1
 echo -e "All are ${RED}okay${NC} ?"
@@ -72,7 +72,7 @@ echo -e "Is that right?"
   lsblk -f
 echo -e ""
  read $tmp
-  pacstrap /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2
+  pacstrap /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 plasma dolphin konsole firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore ttf-ibm-plex sddm git
   genfstab -U /mnt >> /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e "Hey, honey, is right ?"
@@ -93,6 +93,7 @@ arch-chroot /mnt /bin/bash -c "echo -e KEYMAP=br-abnt2 >> /etc/vconsole.conf"
 #arch-chroot /mnt /bin/bash -c "echo -e 127.0.1.1	delta.localdomain	delta >> /etc/hosts"
 #arch-chroot /mnt /bin/bash -c "echo -e nameserver 8.8.8.8 >> /etc/resolv.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
+arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
 echo -e "${RED}Hey honey, chose your password (user account)${NC}"
 arch-chroot /mnt /bin/bash -c "passwd pedrokw"
