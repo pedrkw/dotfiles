@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles (obsolete)
 ## personal dotfiles by pedrkw
 
 
@@ -26,9 +26,3 @@
 `Note:` 
 Some scripts used in polybar depend on extra packages.
 I use arch linux, so some settings on the polybar were made exclusively for this use.
-
-## My i3-gaps personalization
-<img src="Imagens/screenshots/i3config.png">
-
-## My bspwm personalization
-<img src="Imagens/screenshots/bspwmconfig.png">
