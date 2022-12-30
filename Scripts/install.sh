@@ -9,8 +9,6 @@ echo -e "${RED}Hey, don't forget to format disk on${NC} ${GREEN}DOS${NC} ${RED}a
  read $tmp
   cfdisk -z /dev/sda
 echo
-echo -e "Press ${GREEN}enter${NC} to continue"
-echo
   lsblk -f
 echo
 echo -e "Press ${GREEN}enter${NC} to continue"
