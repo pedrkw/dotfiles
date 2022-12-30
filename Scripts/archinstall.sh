@@ -80,9 +80,10 @@ echo -e "Edit your pacman.conf"
   pacstrap -K /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore ttf-ibm-plex git
   genfstab -U /mnt >> /mnt/etc/fstab
   cat /mnt/etc/fstab
-echo -e "Hey, honey, is right ?"
+echo -e " All right ?"
  read $tmp
- echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
+echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
+echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
  read $tmp
 arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
 arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
@@ -102,10 +103,6 @@ echo -e "${RED}Hey honey, chose your password (root account)${NC}"
 arch-chroot /mnt /bin/bash -c "passwd root"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
 arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
-echo -e "Heey, don't forget, ${RED}lvm2${NC} module is important"
-echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
- read $tmp
-arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
  read $tmp
 arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
