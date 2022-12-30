@@ -60,7 +60,7 @@ echo -e "Remember: ${GREEN}downlods${NC} and ${GREEN}multilib${NC}"
 echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
  vim /etc/pacman.conf
-  pacstrap -K /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore plasma-meta dolphin konsole ttf-ibm-plex git
+  pacstrap -K /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore xfce4 xfce4-goodies lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm  ttf-ibm-plex git
   genfstab -U /mnt > /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e " All right ?"
@@ -86,7 +86,7 @@ arch-chroot /mnt /bin/bash -c "echo LANG=en_US.UTF-8 > /etc/locale.conf"
 arch-chroot /mnt /bin/bash -c "echo deltarch >> /etc/hostname"
 arch-chroot /mnt /bin/bash -c "echo KEYMAP=br-abnt2 >> /etc/vconsole.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
-arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
 echo -e "${RED}Chose your password${NC} ${GREEN}(user account)"
 echo -e "Press ${GREEN}enter${NC} to continue"
