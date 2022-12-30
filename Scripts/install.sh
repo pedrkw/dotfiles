@@ -9,11 +9,11 @@ echo -e "${RED}Hey, don't forget to format disk on${NC} ${GREEN}DOS${NC} ${RED}a
  read $tmp
   cfdisk -z /dev/sda
 echo
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
 echo
   lsblk -f
 echo
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
   clear
   lvmdiskscan
@@ -30,11 +30,11 @@ echo -e "Press ${GREEN}yes${NC} or ${GREEN}no${NC}"
   exit
  fi
   vgs
-echo -e "Press ${GREEN}ENTER${NC}"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
   lvcreate -L 20G weeb -n wroot /dev/sda1
   lvcreate -l 100%FREE weeb -n wswap /dev/sda1
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
   clear
   modprobe dm_mod
@@ -49,25 +49,25 @@ echo -e "-"
   mount /dev/weeb/wroot /mnt
  sleep 05
   clear
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
   lsblk -f
 echo -e ""
  read $tmp
 echo -e "Edit your pacman.conf"
 echo -e "Remember: downlods and multilib"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
  vim /etc/pacman.conf
   pacstrap -K /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore plasma-meta dolphin konsole ttf-ibm-plex git
   genfstab -U /mnt > /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e " All right ?"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
 echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
 echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
 arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
 arch-chroot /mnt /bin/bash -c "pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com"
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key FBA220DFC880C036"
@@ -87,17 +87,17 @@ arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
 echo -e "${RED}Chose your password${NC} ${GREEN}(user account)"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
 arch-chroot /mnt /bin/bash -c "passwd pedrokw"
 echo -e "${RED}Chose your password${NC} ${GREEN}(root account)${NC}"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
 arch-chroot /mnt /bin/bash -c "passwd root"
-echo "Press ${GREEN}enter${NC} to continue and edit ${RED}sudoers file${NC}"
+echo -e "Press ${GREEN}enter${NC} to continue and edit ${RED}sudoers file${NC}"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
 #arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
 arch-chroot /mnt /bin/bash -c "grub-install /dev/sda"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
-echo "Press ${GREEN}enter${NC} to continue"
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
 arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
