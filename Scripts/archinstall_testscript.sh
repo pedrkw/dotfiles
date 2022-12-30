@@ -9,10 +9,11 @@ echo -e "${RED}Hey, don't forget to format disk on${NC} ${GREEN}DOS${NC} ${RED}a
  read $tmp
   cfdisk -z /dev/sda
 echo
-echo -e "Hey, is that ${GREEN}right${NC} ?"
+echo "Press ${GREEN}enter${NC} to continue"
 echo
   lsblk -f
 echo
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
   clear
   lvmdiskscan
@@ -29,11 +30,11 @@ echo -e "Type ${GREEN}yes${NC} or ${GREEN}no${NC}"
   exit
  fi
   vgs
-echo -e "Press ENTER"
+echo -e "Press ${GREEN}ENTER${NC}"
  read $tmp
   lvcreate -L 20G weeb -n wroot /dev/sda1
   lvcreate -l 100%FREE weeb -n wswap /dev/sda1
-echo -e "All are ${RED}okay${NC} ?"
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
   clear
   modprobe dm_mod
@@ -48,18 +49,20 @@ echo -e "-"
   mount /dev/weeb/wroot /mnt
  sleep 05
   clear
-echo -e "Is that right?"
+echo "Press ${GREEN}enter${NC} to continue"
   lsblk -f
 echo -e ""
  read $tmp
 echo -e "Edit your pacman.conf"
 echo -e "Remember: downlods and multilib"
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
  vim /etc/pacman.conf
   pacstrap -K /mnt linux linux-firmware base base-devel pipewire lib32-pipewire pipewire-alsa pipewire-pulse wireplumber maim persepolis aria2 bitwarden vulkan-radeon xf86-video-amdgpu lib32-vulkan-radeon lib32-mesa libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau steam gamemode lib32-gamemode libva-vdpau-driver libvdpau-va-gl vulkan-tools obsidian obs-studio papirus-icon-theme materia-gtk-theme discord mpv giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs lutris networkmanager vim grub xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore ttf-ibm-plex git
   genfstab -U /mnt >> /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e " All right ?"
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
 echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
 echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
