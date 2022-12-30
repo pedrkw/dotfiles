@@ -31,8 +31,8 @@ echo -e "Type ${GREEN}yes${NC} or ${GREEN}no${NC}"
   vgs
 echo -e "Press ENTER"
  read $tmp
-  lvcreate -L 30G weeb -n wroot /dev/sda1
-  lvcreate -L 2G weeb -n wswap /dev/sda1
+  lvcreate -L 20G weeb -n wroot /dev/sda1
+  lvcreate -l 100%FREE weeb -n wswap /dev/sda1
 echo -e "All are ${RED}okay${NC} ?"
  read $tmp
   clear
