@@ -20,7 +20,7 @@ echo "Press ${GREEN}enter${NC} to continue"
   pvcreate /dev/sda1
   pvscan
 echo -e "Hey, is that ${RED}right${NC} ?"
-echo -e "Type ${GREEN}yes${NC} or ${GREEN}no${NC}"
+echo -e "Press ${GREEN}yes${NC} or ${GREEN}no${NC}"
  read option;
  if [ $option == "yes" ];
  then
