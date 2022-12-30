@@ -64,12 +64,12 @@ echo -e " All right ?"
  read $tmp
 echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
 echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
+arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
  read $tmp
 arch-chroot /mnt /bin/bash -c "pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com"
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key FBA220DFC880C036"
 arch-chroot /mnt /bin/bash -c "pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'"
 arch-chroot /mnt /bin/bash -c "echo "[chaotic-aur]" >> /etc/pacman.conf && echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf"
-arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
 arch-chroot /mnt /bin/bash -c "pacman -S paru linux-tkg-cfs-generic_v3 ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader"
 arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
