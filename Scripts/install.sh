@@ -44,6 +44,7 @@ echo -e "Press ${GREEN}enter${NC} to continue"
   mkswap /dev/weeb/wswap
 echo -e "-"
   lsblk -f
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
   swapon /dev/weeb/wswap
   mount /dev/weeb/wroot /mnt
@@ -52,6 +53,7 @@ echo -e "-"
 echo -e "Press ${GREEN}enter${NC} to continue"
   lsblk -f
 echo -e ""
+echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
 echo -e "Edit your pacman.conf"
 echo -e "Remember: downlods and multilib"
