@@ -19,13 +19,12 @@ echo
   pvcreate /dev/sda1
   pvscan
 echo -e "Hey, is that ${RED}right${NC} ?"
-echo -e "Yes"
-echo -e "No"
+echo -e "Type ${GREEN}yes${NC} or ${GREEN}no${NC}"
  read option;
- if [ $option == "Yes" ];
+ if [ $option == "yes" ];
  then
   vgcreate weeb /dev/sda1
- elif [ $option == "No" ];
+ elif [ $option == "no" ];
  then
   exit
  fi
