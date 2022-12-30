@@ -67,6 +67,7 @@ echo "Press ${GREEN}enter${NC} to continue"
 echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
 echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
 arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
 arch-chroot /mnt /bin/bash -c "pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com"
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key FBA220DFC880C036"
