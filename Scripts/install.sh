@@ -75,7 +75,7 @@ arch-chroot /mnt /bin/bash -c "pacman-key --recv-key FBA220DFC880C036 --keyserve
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key FBA220DFC880C036"
 arch-chroot /mnt /bin/bash -c "pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'"
 arch-chroot /mnt /bin/bash -c "echo "[chaotic-aur]" >> /etc/pacman.conf"
-arch-chroot /mnt /bin/bash -c "echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf"
+arch-chroot /mnt /bin/bash -c "echo 'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "pacman -Syu paru linux-tkg-cfs-generic_v3 ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader"
 #arch-chroot /mnt /bin/bash -c "timedatectl set-ntp true"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
