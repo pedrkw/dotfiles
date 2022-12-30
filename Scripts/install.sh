@@ -55,8 +55,8 @@ echo -e "Press ${GREEN}enter${NC} to continue"
 echo -e ""
 echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
-echo -e "Edit your pacman.conf"
-echo -e "Remember: downlods and multilib"
+echo -e "${RED}Edit${NC} your ${RED}pacman.conf${NC}"
+echo -e "Remember: ${GREEN}downlods${NC} and ${GREEN}multilib${NC}"
 echo -e "Press ${GREEN}enter${NC} to continue"
  read $tmp
  vim /etc/pacman.conf
