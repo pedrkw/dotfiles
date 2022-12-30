@@ -4,7 +4,7 @@ RED='\033[1;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 #cp /etc/pacman.d/mirrorlist /etc/pacmand./mirrorlist.backup
-#reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
 echo -e "${RED}Hey, don't forget to create UEFI partition..${NC}"
  read $tmp
   cfdisk -z /dev/sda
