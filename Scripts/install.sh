@@ -48,7 +48,6 @@ echo -e "Press ${GREEN}enter${NC} to continue"
   mount /dev/weeb/wroot /mnt
  sleep 05
   clear
-echo -e "Press ${GREEN}enter${NC} to continue"
   lsblk -f
 echo -e ""
 echo -e "Press ${GREEN}enter${NC} to continue"
