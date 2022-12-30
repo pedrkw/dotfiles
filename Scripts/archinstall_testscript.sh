@@ -58,7 +58,7 @@ echo -e "Remember: downlods and multilib"
 echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
  vim /etc/pacman.conf
-  pacstrap -K /mnt linux linux-firmware base base-devel pipewire lib32-pipewire pipewire-alsa pipewire-pulse wireplumber maim persepolis aria2 bitwarden vulkan-radeon xf86-video-amdgpu lib32-vulkan-radeon lib32-mesa libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau steam gamemode lib32-gamemode libva-vdpau-driver libvdpau-va-gl vulkan-tools obsidian obs-studio papirus-icon-theme materia-gtk-theme discord mpv giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs lutris networkmanager vim grub xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore ttf-ibm-plex git
+  pacstrap -K /mnt linux linux-firmware base base-devel networkmanager vim grub efibootmgr xorg-server xorg-xinit fish lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-liberation ttf-croscore ttf-dejavu ttf-bitstream-vera ttf-droid ttf-croscore plasma-meta dolphin konsole ttf-ibm-plex git
   genfstab -U /mnt > /mnt/etc/fstab
   cat /mnt/etc/fstab
 echo -e " All right ?"
@@ -84,16 +84,20 @@ arch-chroot /mnt /bin/bash -c "echo LANG=en_US.UTF-8 > /etc/locale.conf"
 arch-chroot /mnt /bin/bash -c "echo deltarch >> /etc/hostname"
 arch-chroot /mnt /bin/bash -c "echo KEYMAP=br-abnt2 >> /etc/vconsole.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
-#arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
-echo -e "${RED}Hey honey, chose your password (user account)${NC}"
+echo -e "${RED}Chose your password${NC} ${GREEN}(user account)"
+echo "Press ${GREEN}enter${NC} to continue"
 arch-chroot /mnt /bin/bash -c "passwd pedrokw"
-echo -e "${RED}Hey honey, chose your password (root account)${NC}"
+echo -e "${RED}Chose your password${NC} ${GREEN}(root account)${NC}"
+echo "Press ${GREEN}enter${NC} to continue"
 arch-chroot /mnt /bin/bash -c "passwd root"
+echo "Press ${GREEN}enter${NC} to continue and edit ${RED}sudoers file${NC}"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
 #arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
 arch-chroot /mnt /bin/bash -c "grub-install /dev/sda"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
+echo "Press ${GREEN}enter${NC} to continue"
  read $tmp
 arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
