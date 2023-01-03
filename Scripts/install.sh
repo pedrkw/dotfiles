@@ -1,9 +1,9 @@
 #!/bin/bash
-  timedatectl set-ntp true
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 #cp /etc/pacman.d/mirrorlist /etc/pacmand./mirrorlist.backup
+timedatectl set-ntp true
 reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
 echo -e "${RED}Hey, don't forget to create${NC} ${GREEN}UEFI${NC} ${RED}partition${NC}"
  read $tmp
@@ -85,16 +85,16 @@ arch-chroot /mnt /bin/bash -c "pacman -U --noconfirm 'https://cdn-mirror.chaotic
 arch-chroot /mnt /bin/bash -c "echo "[chaotic-aur]" >> /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "echo 'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "vim /etc/pacman.conf"
-arch-chroot /mnt /bin/bash -c "pacman -Syu paru carla linux-tkg-cfs-generic_v3 authy ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader noto-color-emoji-fontconfig --noconfirm"
+arch-chroot /mnt /bin/bash -c "pacman -Syu paru carla menulibre linux-tkg-cfs-generic_v3 authy ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader noto-color-emoji-fontconfig --noconfirm"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
 arch-chroot /mnt /bin/bash -c "sed -i '/en_US.UTF-8/s/^# //' /etc/locale.gen"
 arch-chroot /mnt /bin/bash -c "locale-gen"
 arch-chroot /mnt /bin/bash -c "echo LANG=en_US.UTF-8 > /etc/locale.conf"
-arch-chroot /mnt /bin/bash -c "echo deltarch >> /etc/hostname"
+arch-chroot /mnt /bin/bash -c "echo rubedoarch >> /etc/hostname"
 arch-chroot /mnt /bin/bash -c "echo KEYMAP=br-abnt2 >> /etc/vconsole.conf"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
-arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+#arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
 arch-chroot /mnt /bin/bash -c "useradd -m -g users -s /bin/fish pedrokw"
 echo -e "${RED}Chose your password${NC} ${GREEN}(user account)"
 echo -e "Press ${GREEN}enter${NC} to continue"
