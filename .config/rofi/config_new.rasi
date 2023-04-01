@@ -1,0 +1,17 @@
+configuration {
+    modi: "drun,run";
+    font: "Fira Code Regular 14";
+    show-icons: true;
+    theme: "~/.Xresources";
+    icon-theme: "Papirus";
+    hide-scrollbar: true;
+    click-to-exit: true;
+    line-margin: 10;
+    lines: 20;
+    columns: 1;
+    width: 800;
+    padding: 50;
+    separator-style: solid;
+    separator: true;
+    sidebar-mode: false;
+}
