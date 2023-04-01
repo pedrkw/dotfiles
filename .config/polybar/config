@@ -1,22 +1,3 @@
-#
-#Criado by: @pedrkw
-#
-
-###########################################################
-# ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗  #
-# ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗ #
-# ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝ #
-# ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗ #
-# ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║ #
-# ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ #
-###########################################################
-
-
-
-#################################################################
-#                             CORES                             #
-#################################################################
-
 ;[colors]
 ;background = #282c34
 ;foreground = #abb2bf
@@ -25,8 +6,6 @@
 ;primary = ${colors.background}
 ;secondary = ${colors.foreground}
 ;alert = #f73939
-
-##############################################3
 
 ;[Pywal]
 ;foreground = ${xrdb:color7:#222}
@@ -42,10 +21,6 @@ foreground-alt = ${xrdb:color7:#222}
 primary = ${xrdb:color1:#222}
 secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color3:#222}
-
-#################################################################
-#                               Barra TOP                       #
-#################################################################
 
 [bar/bartop]
 ;monitor = ${env:MONITOR:eDP1}
@@ -77,10 +52,6 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 2
 
-#################################################################
-#                         FONTS BAR TOP                         #
-#################################################################
-
 font-0 = "Poppins:style=Regular:pixelsize=9;2"
 ;font-0 = "Baumans:style=Regular:pixelsize=9;2"
 ;font-0 = "FireCode:style=Regular:pixelsize=8;2"
@@ -89,16 +60,8 @@ font-3 = "xos4 Terminess Powerline:pixelsize=13;1"
 font-2 = "Hack Nerd Font:style=Regular:pixelsize=9;2"
 font-1 = "Font Awesome 5 Free:size=10;1"
 
-#################################################################
-#                         SEPARADOR BAR TOP                     #
-#################################################################
-
 separator = |
 ;separator = /
-
-#################################################################
-#                         MÓDULOS BAR TOP                       #
-#################################################################
 
 modules-left = i3 bspwm
 modules-center = player-mpris-tail title
@@ -107,9 +70,6 @@ modules-right = pulseaudio net popup-calendar date powermenu upinfo-arch
 ;modules-left = i3 bspwm
 ;modules-center = player-mpris-tail title
 ;modules-right = pavucontrol pulseaudio net popup-calendar date cpu memory
-#################################################################
-#                         TRAY BAR TOP                          #
-#################################################################
 
 tray-position = right
 tray-detached = false
@@ -120,10 +80,6 @@ tray-transparent = false
 ;tray-offset-x = 1
 ;tray-offset-y = 1
 tray-background = ${colors.background}
-
-#################################################################
-#                        OPTIONS IGNORE                         #
-#################################################################
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -136,10 +92,6 @@ scroll-down = bspwm-deskprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-#################################################################
-#                          BARRA BOTTOM                         #
-#################################################################
 
 [bar/barbottom]
 ;monitor = ${env:MONITOR:eDP1}
@@ -167,9 +119,6 @@ padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 2
-#################################################################
-#                         FONTS BAR BOTTOM                      #
-#################################################################
 
 font-0 = "Poppins:style=Regular:pixelsize=9;2"
 ;font-0 = "Baumans:style=Regular:pixelsize=9;2"
@@ -179,16 +128,8 @@ font-3 = "xos4 Terminess Powerline:pixelsize=13;1"
 font-2 = "Hack Nerd Font:style=Regular:pixelsize=9;2"
 font-1 = "Font Awesome 5 Free:size=10;1"
 
-#################################################################
-#                         SEPARADOR BAR BOTTOM                  #
-#################################################################
-
 separator = |
 ;separator = /
-
-#################################################################
-#                         MÓDULOS BAR BOTTOM                    #
-#################################################################
 
 modules-left = linux powermenu refresh upinfo-arch
 modules-center = player-mpris-tail title
@@ -197,10 +138,6 @@ modules-right = lock print xkeyboard kernel
 ;modules-left = user pywall1 pywall2 pywall3 kernel 
 ;modules-center = firefox terminal menu manager telegram
 ;modules-right = print  upinfo-arch refresh lock powermenu linux
-
-#################################################################
-#                         TRAY BAR BOTTOM                       #
-#################################################################
 
 tray-position = right
 tray-detached = false
@@ -215,17 +152,9 @@ tray-background = ${colors.background}
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-#
-#
-#
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-#
-#
-#
 
 [module/title]
 type = internal/xwindow
@@ -243,10 +172,6 @@ label-maxlen = 50
 label-empty = Vazio
 label-empty-foreground = ${colors.foreground}
 
-#
-#
-#
-
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -262,10 +187,6 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${xrdb:color0:#222}
 label-indicator-underline = ${xrdb:color5:#222}
-
-#
-#
-#
 
 [module/bspwm]
 type = internal/bspwm
@@ -291,10 +212,6 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
  label-separator = |
-
-#
-#
-#
 
 [module/i3]
 type = internal/i3
@@ -352,10 +269,6 @@ label-urgent-background = ${xrdb:color2:#222}
 ;label-urgent-underline = ${xrdb:color3:#222}
 label-urgent-padding = 4
 
-#
-#
-#
-
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -369,10 +282,6 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-#
-#
-#
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -383,10 +292,6 @@ format-prefix-foreground = ${xrdb:color7:#222}
 ;format-underline = #778da9
 label = %percentage:2%%
 
-#
-#
-#
-
 [module/memory]
 type = internal/memory
 interval = 2
@@ -395,10 +300,6 @@ format-prefix-foreground = ${xrdb:color7:#222}
 ;format-prefix-foreground = #b4c8ca
 ;format-underline = #778da9
 label = %percentage_used%%
-
-#
-#
-#
 
 [module/eth]
 type = internal/network
@@ -416,10 +317,6 @@ format-disconnected = <label-disconnected>
 label-disconnected = Net caiu garai
 label-disconnected-foreground = ${xrdb:color7:#222}
 
-#
-#
-#
-
 [module/date]
 type = internal/date
 interval = 5
@@ -436,10 +333,6 @@ format-prefix-foreground = ${xrdb:color7:#222}
 #format-underline = #778da9
 
 label = %date% %time%
-
-#
-#
-#
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -469,10 +362,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 click-right = exec pavucontrol &
-
-#
-#
-#
 
 [module/powermenu]
 type = custom/menu
@@ -507,10 +396,6 @@ menu-3-0 = suspender
 menu-3-0-exec = systemctl suspend
 menu-3-1-exec = menu-open-0
 
-#############################################################################
-#                                 IGNORE                                    #
-#############################################################################
-
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -524,346 +409,3 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
-
-#############################################################################
-#                                MODULOS PERSONALIZADOS                     #
-#############################################################################
-[module/pavucontrol]
-type = custom/text
-content = " 墳 "
-content-foreground = ${colors.foreground}
-click-left = exec pavucontrol &
-
-#
-#
-#
-
-[module/menu]
-type = custom/text
-content = "%{F${colors.foreground}  %{F-} Menu"
-content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = rofi -show drun &
-
-#
-#
-#
-
-[module/firefox]
-type = custom/text
-content = "  "
-content-foreground = #F2A65A
-;content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec firefox &
-
-#
-#
-#
-
-[module/chromium]
-type = custom/text
-content = "  "
-content-foreground = #85C1E9
-;content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec chromium &
-
-#
-#
-#
-
-[module/telegram]
-type = custom/text
-content = "  "
-content-foreground = #78adce
-;content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec telegram &
-;click-left = exec telegram-desktop &
-
-#
-#
-#
-
-[module/terminal]
-type = custom/text
-content = "  "
-content-foreground = #CCE6F4
-;content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-;click-left = exec urxvt &
-click-left = exec kitty &
-
-#
-#
-#
-
-[module/manager]
-type = custom/text
-content = "  "
-content-foreground = #BBC7A4
-;content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec pcmanfm &
-
-#
-#
-#
-
-[module/user]
-type = custom/text
-;content = "%{F${colors.foreground}  %{F-} Okaerinasai"
-;content = "%{F${colors.foreground}  %{F-} Olá, OniiChan"
-;content-underline = ${colors.foreground}
-
-#
-#
-#
-
-[module/linux]
-type = custom/text
-content = "%{F${colors.foreground}%{F-} Arch Linux"
-;content-underline = ${colors.foreground}
-click-left = firefox https://www.archlinux.org/ &
-
-#
-#
-#
-
-[module/popup-calendar]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/popup-calendar.sh
-interval = 5
-click-left = $HOME/.config/polybar/scripts/popup-calendar.sh --popup &
-
-#
-#
-#
-
-[module/frase]
-type = custom/text
-content = "%{F${colors.foreground}%{F-}  Caçar E-girl!!!"
-;content-underline = ${colors.foreground}
-
-#
-#
-#
-
-[module/refresh]
-type = custom/text
-content = "  "
-content-foreground = ${colors.foreground}
-click-left = bspc wm -r &
-;click-left = i3-msg restart &
-
-#
-#
-#
-
-[module/github]
-type = custom/text
-content = 
-;content = 
-content-foreground = ${colors.foreground}
-click-left = ~/Scripts/github.sh
-
-#
-#
-#
-
-[module/print]
-type = custom/text
-content = "%{F${colors.foreground}  %{F-}"
-;content-underline = ${colors.foreground}
-;click-left = bash -c 'maim "$HOME/Imagens/Captura de tela de %d-%m-%Y %H:%M:%S.png"' &
-;click-left = bash -c 'scrot "$HOME/Imagens/screenshots/Captura de tela de %d-%m-%Y %H:%M:%S.png"' ; notify-send "Captura de tela realizada" &
-click-left = bash -c 'scrot "$HOME/Imagens/screenshots/%d-%m-%Y %H:%M:%S.png"' && notify-send "Captura de tela realizada" &
-;click-left = $HOME/Scripts/screenshot.sh &
-
-#
-#
-#
-
-[module/gravar]
-type = custom/script
-interval = 0.1
-label = %output%
-click-left = kitty ~/.config/polybar/scripts/gravar.sh &
-exec = ~/.config/polybar/scripts/gravar.sh status
-tail = true
-
-#
-#
-#
-
-[module/lock]
-type = custom/text
-content = "  "
-content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-#click-left = betterlockscreen -l blur -t "Digite a senha..."
-click-left = xsecurelock
-
-#
-#
-#
-
-[module/upinfo-arch]
-type = custom/script
-exec = ~/.config/polybar/scripts/upinfo-arch.sh
-interval = 600
-
-#
-#
-#
-
-[module/pacman]
-type = custom/script
-interval = 1
-exec = pacman -Qq | wc -l
-label = "%{F${colors.foreground}  %{F-} %output:0:37:...%"
-;format-underline = ${colors.foreground}
-;format-background = ${colors.foreground}
-
-#
-#
-#
-
-[module/news-archlinux]
-type = custom/script
-exec = ~/.config/polybar/scripts/news-archlinux.py
-interval = 600
-click-left = firefox https://www.archlinux.org/ &
-;click-left = chromium https://www.archlinux.org/ &
-
-#
-#
-#
-
-[module/kernel]
-type = custom/script
-exec = uname -r
-;label = "%{F#${colors.foreground}  %{F-} %output:0:37:...%"
-label = "%{F#${colors.foreground}  %{F-} %output:0:37:...%"
-;format-underline = ${colors.foreground}
-
-#
-#
-#
-
-[module/player-mpris-tail]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}'
-#exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:]~/.config/polybar/scripts/player-mpris-tail.py previous -b vlc -b plasma-browser-integration:} ⏮ %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py play-pause -b vlc -b plasma-browser-integration:} {icon-reversed} %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py next -b vlc -b plasma-browser-integration:} ⏭ %{A}' -b vlc -b plasma-browser-integration
-tail = true
-click-left = $HOME/.config/polybar/scripts/player-mpris-tail.py previous &
-click-right = $HOME/.config/polybar/scripts/player-mpris-tail.py next &
-click-middle = $HOME/.config/polybar/scripts/player-mpris-tail.py play-pause &
-
-#
-#
-#
-
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = "  "
-format = <label>
-exec = python $HOME/.config/polybar/scripts/spotify_status.py -f '{song} - {artist}'
-format-underline = #1db954
-
-#
-#
-#
-
-[module/bluetooth]
-type = custom/text
-;content = "  "
-content = "  "
-content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec blueman-applet &
-click-right = exec blueman-manager &
-
-#
-#
-#
-
-[module/net]
-type = custom/script
-interval = 0.1
-label = %output%
-exec = ~/.config/polybar/scripts/checknet.sh
-tail = true
-
-#
-#
-#
-
-[module/pywall1]
-type = custom/text
-content = "%{F${colors.foreground}  %{F-}"
-click-left = exec wal -i ~/Imagens/ --iterative &
-
-;
-;
-;
-
-#
-#
-#
-
-[module/wifi]
-type = custom/text
-content = "  "
-content-foreground = ${colors.foreground}
-;content-underline = ${colors.foreground}
-click-left = exec i3-sensible-terminal -e nmtui  &
-
-#
-#
-#
-
-[module/rede]
-type = internal/network
-interface = enp3s0
-interval = 0.1
-
-format-packetloss = <animation-packetloss>
-format-connected = <label-connected>
-format-disconnected = <label-disconnected>
-label-connected = Conectado
-label-connected-foreground = #64ff33
-label-disconnected = Desconectado
-label-disconnected-foreground = #fe2020
-
-#
-#
-#
-
-[module/wireless]
-type = internal/network
-interface = wlp2s0
-interval = 0.1
-
-format-packetloss = <animation-packetloss>
-format-connected = <ramp-signal>
-format-disconnected = <label-disconnected>
-;label-connected = Conectado
-label-connected-foreground = #3dff00
-label-disconnected = Desconectado
-label-disconnected-foreground = #ff0000
-
-ramp-signal-0 = 
-ramp-signal-0-foreground = #fe3823
-ramp-signal-1 = 
-ramp-signal-1-foreground = #ecf91c
-ramp-signal-2 = 
-ramp-signal-2-foreground = #55ff00
-;ramp-signal-3 = 
-;ramp-signal-3-foreground = #D8DE72
-;ramp-signal-4 = 
-;ramp-signal-4-foreground = #BADE72
-;ramp-signal-5 = 
-;ramp-signal-5-foreground = #96DE72
