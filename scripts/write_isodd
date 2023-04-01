@@ -4,48 +4,48 @@
 whoami=$(whoami)
 
 # Ask for ISO file path.
-echo "Insira o caminho da ISO para gravar."
-echo "Por exemplo: ~/Downloads/archlinux.iso"
+echo "Please enter the path to the ISO file to copy."
+echo "For example: ~/Downloads/archlinux.iso"
 read iso
 
 # Verify ISO path.
 if [ ! -f "$iso" ]; then
-    echo "O caminho do arquivo ISO é inválido. Por favor, verifique e tente novamente."
+    echo "The ISO file path is invalid. Please check and try again."
     exit 1
 fi
 
 # List available devices and ask for device to be used.
-echo "Se você não sabe qual a partição do drive a ser usado, escolha qual drive será usado."
+echo "If you don't know which drive partition to use, choose which drive to use."
 lsblk
-echo "Informe qual o drive será usado."
-echo "Por exemplo: /dev/sdx (troque o x pela letra correspondente)"
+echo "Please enter the drive path to use."
+echo "For example: /dev/sdx (replace x with the corresponding letter)"
 read drive
 
 # Verify device path.
 if [ ! -b "$drive" ]; then
-    echo "O caminho do dispositivo é inválido. Por favor, verifique e tente novamente."
+    echo "The device path is invalid. Please check and try again."
     exit 1
 fi
 
 # Ask for confirmation before starting the copy process.
-echo "Você tem certeza de que deseja iniciar a gravação do ISO em $drive?"
-echo "Digite 'sim' para confirmar ou qualquer outra tecla para cancelar."
+echo "Are you sure you want to start copying the ISO to $drive?"
+echo "Type 'yes' to confirm or any other key to cancel."
 read -r confirm
 
-if [ "$confirm" != "sim" ]; then
-    echo "A gravação do ISO foi cancelada."
+if [ "$confirm" != "yes" ]; then
+    echo "The ISO copy process was canceled."
     exit 1
 fi
 
 # Verify write permission.
 if [ ! -w "$drive" ]; then
-    echo "Você não tem permissão para gravar neste dispositivo. Por favor, execute o script como root ou como um usuário com permissão de gravação no dispositivo."
+    echo "You don't have write permission for this device. Please run the script as root or as a user with write permission on the device."
     exit 1
 fi
 
 # Start copy process.
-echo "Iniciando gravação, aguarde..."
+echo "Starting copy process, please wait..."
 dd if="$iso" of="$drive" bs=4M oflag=sync status=progress
 
 # Print message when copy process is completed.
-echo "Gravação concluída."
+echo "ISO copy process completed."
