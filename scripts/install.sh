@@ -5,8 +5,10 @@ NC='\033[0m'
 reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
 echo -e "${RED}Hey, don't forget to create${NC} ${GREEN}UEFI${NC} ${RED}partition${NC}"
 read $tmp
-cfdisk -z /dev/sda
-cfdisk -z /dev/sdb
+#cfdisk -z /dev/sda
+#cfdisk -z /dev/sdb
+parted /dev/sda mklabel gpt mkpart primary fat32 1MiB 512MiB mkpart primary ext4 512MiB 100%
+parted /dev/sdb mklabel gpt mkpart primary linux-swap 1MiB 16GiB mkpart primary ext4 16GiB 48GiB mkpart primary ext4 48GiB 348GiB
 echo
 lsblk -f
 echo
