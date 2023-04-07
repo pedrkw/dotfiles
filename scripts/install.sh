@@ -32,7 +32,8 @@ echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
 lvcreate -l 100%FREE weeb -n wroot /dev/sda2
 lvcreate -L 16G weeb -n wswap /dev/sdb1
-lvcreate -L 32G weeb -n wvar /dev/sdb1
+lvcreate -L 4G weeb -n wvarlog /dev/sdb1
+lvcreate -L 32G weeb -n wvarcache /dev/sdb1
 lvcreate -L 300G weeb -n whdd /dev/sdb1
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
@@ -42,7 +43,8 @@ vgscan
 vgchange -ay
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/weeb/wroot
-mkfs.ext4 /dev/weeb/wvar
+mkfs.ext4 /dev/weeb/wvarlog
+mkfs.ext4 /dev/weeb/wvarcache
 mkfs.ext4 /dev/weeb/whdd
 mkswap /dev/weeb/wswap
 echo -e "-"
@@ -50,9 +52,10 @@ lsblk -f
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
 mount /dev/weeb/wroot /mnt
-mkdir -p /mnt/{var,hdd,boot/efi}
+mkdir -p /mnt/{var/log,var/cache,hdd,boot/efi}
 mount /dev/sda1 /mnt/boot/efi
-mount /dev/weeb/wvar /mnt/var
+mount /dev/weeb/wvarlog /mnt/var/log
+mount /dev/weeb/wvarcache /mnt/var/cache
 mount /dev/weeb/whdd /mnt/hdd
 swapon /dev/weeb/wswap
 sleep 05
@@ -87,7 +90,7 @@ arch-chroot /mnt /bin/bash -c "vim /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "pacman -Syu paru --noconfirm"
 #arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm xorg rofi python-pywal polybar kitty i3-wm dmenu mpv dunst pcmanfm-gtk3 materia-gtk-theme papirus-icon-theme lxappearance-gtk3 viewnior transmission-gtk aria2 curl feh maim smartmontools neofetch yad"
 #arch-chroot /mnt /bin/bash -c "pacman -Syu latte-dock plasma-meta dolphin vlc elisa materia-kde kvantum-theme-materia konsole sddm kvantum spectacle flatpak okular --noconfirm"
-arch-chroot /mnt /bin/bash -c "pacman -Syu gnome-shell gnome-control-center gnome-text-editor gdm mpv totem nautilus p7zip unrar evince eog sushi gnome-calculator gnome-calendar gnome-clocks lollypop gnome-system-monitor tilix file-roller transmission-gtk"
+arch-chroot /mnt /bin/bash -c "pacman -Syu gnome-shell gnome-control-center gnome-text-editor yaru-gnome-shell-theme gdm mpv totem nautilus p7zip unrar evince eog sushi gnome-calculator gnome-calendar gnome-clocks lollypop gnome-system-monitor gnome-tweaks tilix file-roller transmission-gtk xdg-desktop-portal-gnome xdg-user-dirs-gtk"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
 arch-chroot /mnt /bin/bash -c "hwclock --systohc"
 arch-chroot /mnt /bin/bash -c "sed -i 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen"
@@ -107,7 +110,7 @@ echo -e "Press ${GREEN}enter${NC} to continue"
 arch-chroot /mnt /bin/bash -c "passwd root"
 echo -e "Press ${GREEN}enter${NC} to continue and edit ${RED}sudoers file${NC}"
 arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
-arch-chroot /mnt /bin/bash -c "sudo -u pedrokw paru -Syu carla menulibre linux-tkg-cfs-generic_v3 linux-tkg-cfs-generic_v3-headers authy ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud hunspell hunspell-en_us gvfs gvfs-mtp xdg-user-dirs-gtk xdg-desktop-portal xdg-desktop-portal-gnome libxcrypt-compat net-tools inetutils aria2 hunspell-pt-br heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader noto-color-emoji-fontconfig btop ocs-url adw-gtk3-git pop-icon-theme yaru-gnome-shell-theme yaru-gtk-theme yaru-icon-theme yaru-sound-theme flatpak flatpak-xdg-utils libportal-qt5 libportal-gtk3 libportal-gtk4 ccache wget gnome-tweaks ttf-ubuntu-font-family gnome-browser-connector ttf-opensans 64gram-desktop-bin goverlay-git wine-gecko wine-mono wine-nine proton-ge-custom-bin winetricks zenity neofetch jdk-temurin intellij-idea-community-edition pycharm-community-edition icu69-bin gst-plugin-pipewire gst-plugins-ugly gstreamer-vaapi xonotic gnome-sound-recorder ulauncher gnome-boxes docker notification-daemon bat thunderbird thunderbird-i18n-en-us thunderbird-i18n-pt-br seahorse schedtool polkit-gnome lib32-polkit protontricks-git inxi ufetch-git whatsie-git corectrl update-grub bauh clonezilla --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u pedrokw paru -Syu carla menulibre linux-tkg-cfs-generic_v3 linux-tkg-cfs-generic_v3-headers authy ttf-juliamono spotify anydesk-bin visual-studio-code-bin droidcam mangohud lib32-mangohud hunspell hunspell-en_us gvfs gvfs-mtp xdg-desktop-portal libxcrypt-compat net-tools inetutils aria2 hunspell-pt-br heroic-games-launcher-bin wine-tkg-staging-fsync-git vulkan-icd-loader lib32-vulkan-icd-loader noto-color-emoji-fontconfig btop ocs-url adw-gtk3-git pop-icon-theme yaru-gtk-theme yaru-icon-theme yaru-sound-theme flatpak flatpak-xdg-utils libportal-qt5 libportal-gtk3 libportal-gtk4 ccache wget ttf-ubuntu-font-family gnome-browser-connector ttf-opensans 64gram-desktop-bin goverlay-git wine-gecko wine-mono wine-nine proton-ge-custom-bin winetricks zenity neofetch jdk-temurin intellij-idea-community-edition pycharm-community-edition icu69-bin gst-plugin-pipewire gst-plugins-ugly gstreamer-vaapi xonotic gnome-sound-recorder ulauncher gnome-boxes docker notification-daemon bat thunderbird thunderbird-i18n-en-us thunderbird-i18n-pt-br seahorse schedtool polkit-gnome lib32-polkit protontricks-git inxi ufetch-git whatsie-git corectrl update-grub bauh clonezilla --noconfirm"
 arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
 echo -e "Press ${GREEN}enter${NC} to continue"
