@@ -5,10 +5,14 @@ NC='\033[0m'
 #reflector --verbose --latest 12 --sort rate --save /etc/pacman.d/mirrorlist
 echo -e "${RED}Hey, don't forget to create${NC} ${GREEN}UEFI${NC} ${RED}partition${NC}"
 read $tmp
-cfdisk -z /dev/sda
-cfdisk -z /dev/sdb
-#parted /dev/sda mklabel gpt mkpart primary fat32 1MiB 512MiB mkpart primary ext4 512MiB 100%
-#parted /dev/sdb mklabel gpt mkpart primary linux-swap 1MiB 16GiB mkpart primary ext4 16GiB 48GiB mkpart primary ext4 48GiB 348GiB
+#cfdisk -z /dev/sda
+#cfdisk -z /dev/sdb
+parted /dev/sda mklabel gpt
+parted /dev/sda mkpart primary fat32 1MiB 512MiB
+parted /dev/sda mkpart primary ext4 512MiB 100%
+#
+parted /dev/sdb mklabel gpt
+parted /dev/sdb mkpart primary ext4 100%
 echo
 lsblk -f
 echo
@@ -32,8 +36,7 @@ echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
 lvcreate -l 100%FREE weeb -n wroot /dev/sda2
 lvcreate -L 16G weeb -n wswap /dev/sdb1
-lvcreate -L 4G weeb -n wvarlog /dev/sdb1
-lvcreate -L 32G weeb -n wvarcache /dev/sdb1
+lvcreate -L 24G weeb -n wvarcache /dev/sdb1
 lvcreate -L 300G weeb -n whdd /dev/sdb1
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
@@ -43,7 +46,6 @@ vgscan
 vgchange -ay
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/weeb/wroot
-mkfs.ext4 /dev/weeb/wvarlog
 mkfs.ext4 /dev/weeb/wvarcache
 mkfs.ext4 /dev/weeb/whdd
 mkswap /dev/weeb/wswap
@@ -52,9 +54,8 @@ lsblk -f
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
 mount /dev/weeb/wroot /mnt
-mkdir -p /mnt/{var/log,var/cache,hdd,boot/efi}
+mkdir -p /mnt/{var/cache,hdd,boot/efi}
 mount /dev/sda1 /mnt/boot/efi
-mount /dev/weeb/wvarlog /mnt/var/log
 mount /dev/weeb/wvarcache /mnt/var/cache
 mount /dev/weeb/whdd /mnt/hdd
 swapon /dev/weeb/wswap
