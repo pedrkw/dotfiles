@@ -37,4 +37,9 @@ while true; do
       exit 1
     fi
 
-    echo "Deseja baixar outro vídeo ou áudio? (Digite 's' para sim ou 'n' para não):"
+    echo "Deseja baixar outro vídeo ou áudio? (Digite 's' para sim ou 'n' para não): "
+	read choice
+    if [ "$choice" != "s" ]; then
+        break
+    fi
+done
