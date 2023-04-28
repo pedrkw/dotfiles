@@ -11,6 +11,12 @@ while true; do
     echo "Por favor, insira o link do vídeo ou da playlist que deseja baixar: "
     read url
 
+    # Verificar se o link é válido
+    if ! echo "$url" | grep -E '^https://(www\.youtube\.com|youtu\.be)' &> /dev/null; then
+        echo "O link inserido não é válido. Por favor, insira um link válido do YouTube."
+        continue
+    fi
+
     echo "Deseja baixar um vídeo ou áudio? (Digite 'v' para vídeo ou 'a' para áudio): "
     read media_type
 
@@ -38,7 +44,7 @@ while true; do
     fi
 
     echo "Deseja baixar outro vídeo ou áudio? (Digite 's' para sim ou 'n' para não): "
-	read choice
+    read choice
     if [ "$choice" != "s" ]; then
         break
     fi
