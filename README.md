@@ -1,5 +1,4 @@
 # dotfiles (obsolete)
-## personal dotfiles by pedrkw
 
 
 
