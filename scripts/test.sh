@@ -34,7 +34,8 @@ arch-chroot /mnt /bin/bash -c "echo 'Include = /etc/pacman.d/chaotic-mirrorlist'
 arch-chroot /mnt /bin/bash -c "vim /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "pacman -Syu paru --noconfirm"
 # arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm xorg rofi polkit-gnome python-pywal polybar kitty i3-wm dmenu mpv dunst pcmanfm-gtk3 materia-gtk-theme papirus-icon-theme lxappearance-gtk3 viewnior transmission-gtk aria2 curl feh maim smartmontools neofetch yad"
-arch-chroot /mnt /bin/bash -c "pacman -Syu plasma-meta dolphin vlc konsole sddm spectacle okular kate kdialog dolphin-plugins ffmpegthumbs gwenview kdegraphics-thumbnailers yakuake ark sweeper ksystemlog kmag kdeconnect libktorrent qt5-imageformats kimageformats kwalletmanager xdg-desktop-portal-kde plasma-wayland-protocols kalk kclock krecorder --noconfirm"
+arch-chroot /mnt /bin/bash -c "pacman -Syu plasma-meta dolphin konsole sddm --noconfirm"
+# arch-chroot /mnt /bin/bash -c "pacman -Syu plasma-meta dolphin vlc konsole sddm spectacle okular kate kdialog dolphin-plugins ffmpegthumbs gwenview kdegraphics-thumbnailers yakuake ark sweeper ksystemlog kmag kdeconnect libktorrent qt5-imageformats kimageformats kwalletmanager xdg-desktop-portal-kde plasma-wayland-protocols kalk kclock krecorder --noconfirm"
 # elisa qtcurve-gtk2 qtcurve-utils plasma-wayland-session materia-kde kvantum-theme-materia kvantum ufw
 # arch-chroot /mnt /bin/bash -c "pacman -Syu adw-gtk3-git gnome-shell gnome-control-center gnome-text-editor yaru-gnome-shell-theme gdm mpv totem nautilus p7zip unrar evince eog sushi gnome-calculator gnome-calendar gnome-clocks lollypop gnome-system-monitor gnome-tweaks tilix file-roller xdg-desktop-portal-gnome xdg-user-dirs-gtk gnome-browser-connector polkit-gnome seahorse python-nautilus adwaita-qt5 adwaita-qt6 qt5-styleplugins nautilus-image-converter ufw gufw gparted"
 arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/America/Fortaleza /etc/localtime"
@@ -68,8 +69,8 @@ arch-chroot /mnt /bin/bash -c "visudo /etc/sudoers"
 # arch-chroot /mnt /bin/bash -c "sudo -u pedrokw sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)""
 # read $tmp
 arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
-echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
-echo -e "Press ${GREEN}enter${NC} to continue"
-read $tmp
-arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
+# echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
+# echo -e "Press ${GREEN}enter${NC} to continue"
+# read $tmp
+# arch-chroot /mnt /bin/bash -c "vim /etc/default/grub"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
