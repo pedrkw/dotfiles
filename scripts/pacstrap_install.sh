@@ -8,8 +8,8 @@ echo -e "Remember: ${GREEN}downlods${NC} and ${GREEN}multilib${NC}"
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
 vim /etc/pacman.conf
-pacstrap -K /mnt linux linux-headers linux-firmware base base-devel sof-firmware bash-completion pipewire lib32-pipewire pipewire-alsa pipewire-pulse wireplumber aria2 bitwarden vulkan-radeon xf86-video-amdgpu lib32-vulkan-radeon lib32-mesa mesa-vdpau lib32-mesa-vdpau steam gamemode lib32-gamemode vulkan-tools obs-studio papirus-icon-theme materia-gtk-theme discord giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins alsa-firmware lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs lutris networkmanager vim grub xorg-server xorg-xinit lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-croscore ttf-dejavu ttf-droid ttf-croscore git xdg-user-dirs openssh pacman-contrib efibootmgr reflector qbittorrent vivaldi vivaldi-ffmpeg-codecs
-# removed pkgs: zsh-autosuggestions zsh-completions ttf-liberation ttf-bitstream-vera ttf-ibm-plex terminus-font fish zsh maim flameshot
+pacstrap -K /mnt linux linux-headers linux-firmware base base-devel bash-completion pipewire lib32-pipewire pipewire-alsa pipewire-pulse wireplumber aria2 bitwarden vulkan-radeon xf86-video-amdgpu lib32-vulkan-radeon lib32-mesa mesa-vdpau lib32-mesa-vdpau steam gamemode lib32-gamemode vulkan-tools obs-studio papirus-icon-theme materia-gtk-theme discord giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins alsa-firmware lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs lutris networkmanager vim grub xorg-server xorg-xinit lvm2 firefox gnu-free-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts ttf-croscore ttf-dejavu ttf-droid ttf-croscore git xdg-user-dirs openssh pacman-contrib efibootmgr reflector qbittorrent vivaldi vivaldi-ffmpeg-codecs
+# removed pkgs: zsh-autosuggestions zsh-completions ttf-liberation ttf-bitstream-vera ttf-ibm-plex terminus-font fish zsh maim flameshot sof-firmware
 # video driver:  libva-vdpau-driver lib32-libva-mesa-driver libvdpau-va-gl lib32-libvdpau
 genfstab -U /mnt > /mnt/etc/fstab
 cat /mnt/etc/fstab
@@ -22,11 +22,14 @@ read $tmp
 arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
+echo -e "Installing ${GREEN}Chaotic AUR${NC}..."
 arch-chroot /mnt /bin/bash -c "pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com"
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key 3056513887B78AEB"
 arch-chroot /mnt /bin/bash -c "pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'"
 arch-chroot /mnt /bin/bash -c "echo '[chaotic-aur]' >> /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "echo 'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf"
+# echo -e "Chaotic AUR installed!"
+# echo -e "Edit pacman.conf"
 arch-chroot /mnt /bin/bash -c "vim /etc/pacman.conf"
 arch-chroot /mnt /bin/bash -c "pacman -Syu paru --noconfirm"
 # arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm xorg rofi polkit-gnome python-pywal polybar kitty i3-wm dmenu mpv dunst pcmanfm-gtk3 materia-gtk-theme papirus-icon-theme lxappearance-gtk3 viewnior transmission-gtk aria2 curl feh maim smartmontools neofetch yad"
