@@ -17,12 +17,12 @@ cat /mnt/etc/fstab
 echo -e " All right ?"
 echo -e "Press ${GREEN}enter${NC} to continue"
 read $tmp
-echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
-echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
-read $tmp
-arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
-echo -e "Press ${GREEN}enter${NC} to continue"
-read $tmp
+# echo -e "Heey, don't forget, ${GREEN}lvm2${NC} module is important"
+# echo -e "HOOKS=(base udev ... ${RED}block${NC} -->> ${GREEN}lvm2${NC} <<-- ${RED}filesystems)${NC}"
+# read $tmp
+# arch-chroot /mnt /bin/bash -c "vim /etc/mkinitcpio.conf"
+# echo -e "Press ${GREEN}enter${NC} to continue"
+# read $tmp
 arch-chroot /mnt /bin/bash -c "pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com"
 arch-chroot /mnt /bin/bash -c "pacman-key --lsign-key 3056513887B78AEB"
 arch-chroot /mnt /bin/bash -c "pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'"
