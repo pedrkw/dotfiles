@@ -1,0 +1,1 @@
+pacman -Syu plasma-meta dolphin vlc konsole sddm spectacle okular kate kdialog dolphin-plugins ffmpegthumbs gwenview kdegraphics-thumbnailers yakuake ark sweeper ksystemlog kmag kdeconnect libktorrent qt5-imageformats kimageformats kwalletmanager xdg-desktop-portal-kde plasma-wayland-protocols kalk kclock krecorder
