@@ -73,7 +73,7 @@ read -p "Press Enter to continue..."
 # Mount volumes
 mount /dev/entropy/eroot /mnt || exit 1
 # mkdir -p /mnt/{var/cache,hdd,boot/efi}
-mkdir -p /mnt/{/data/hddwd,boot/efi}
+mkdir -p /mnt/{/data/hddwd,boot/efi} || exit 1
 mount /dev/nvme0n1p1 /mnt/boot/efi || exit 1
 # mount /dev/entropy/wvarcache /mnt/var/cache || exit 1
 mount /dev/entropy/ehddwd /mnt/data/hdd || exit 1
