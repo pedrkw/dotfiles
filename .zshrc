@@ -93,22 +93,24 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # User configuration
 
-function preexec() {
-  timer=${timer:-$SECONDS}
-}
-
-function precmd() {
-  if [ $timer ]; then
-    timer_show=$(($SECONDS - $timer))
-    export RPROMPT="%F{green}took ${timer_show}s %{$reset_color%}"
-    unset timer
-  fi
-}
+# This code measures the execution time of the last command and displays it in the right prompt (RPROMPT).
+# - preexec(): Runs before a command executes, storing the current time in 'timer'.
+# - precmd(): Runs before the prompt is displayed, calculating and showing the elapsed time in seconds.
+# function preexec() {
+#   timer=${timer:-$SECONDS}
+# }
+#
+# function precmd() {
+#   if [ $timer ]; then
+#     timer_show=$(($SECONDS - $timer))
+#     export RPROMPT="%F{green}took ${timer_show}s %{$reset_color%}"
+#     unset timer
+#   fi
+# }
 
 # export MANPATH="/usr/local/man:$MANPATH"
-# Export path for local bin
-export PATH="$HOME/.local/bin:$PATH"
-export GTK_USE_PORTAL=1
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$PATH"
+# export GTK_USE_PORTAL=1
 export EDITOR='vim'
 #export REPORTTIME=0.5
 
@@ -142,14 +144,6 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
-#setopt INC_APPEND_HISTORY
-#setopt SHARE_HISTORY
-#setopt HIST_IGNORE_DUPS
-#setopt HIST_IGNORE_ALL_DUPS
-#setopt HIST_REDUCE_BLANKS
-#setopt HIST_VERIFY
-#setopt HIST_IGNORE_SPACE
-#setopt HIST_BEEP
 
 #HISTIGNORE="&:ls:bg:fg:exit"
 export HIST_STAMPS="yyyy-mm-dd"
@@ -168,4 +162,5 @@ export HIST_STAMPS="yyyy-mm-dd"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias viewswaps="swapon --show=NAME,SIZE,USED"
+alias as_viewswaps="swapon --show=NAME,SIZE,USED"
+# alias as_mountwaydroid=""
