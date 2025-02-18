@@ -1,27 +1,13 @@
-# dotfiles (obsolete)
+# Dotfiles
 
+Welcome to my dotfiles repository! This is where I store various configuration files, scripts, and other customizations for my system.
 
+## Disclaimer
 
-|   Programs I use       |   Description                                               |
-| :---                   |     :---:                                                   |
-| `i3-gaps`              | Window manager                                              |
-| `polybar`              | Status bar                                                  |
-| `rofi`                 | Application launcher                                        |
-| `pywal`                | Generate and change color-schemes on the fly                |
-| `rxvt-unicode / kitty` | Terminal                                                    |
-| `mpv`                  | Multimidia player                                           |
-| `dunst`                | Notification-daemons                                        |
-| `pcmanfm`              | File manager                                                |
-| `viewnior`             | Image view                                                  |
-| `firefox`              | Browser                                                     |
-| `vscode` / `vim`       | Text editor                                                 |
-| `transmission`         | BitTorrent client                                           |
-| `flameshot` / `scrot`  | Screenshot progam                                           |
-| `feh`                  | Image view and set wallpaper                                |
+These dotfiles are configured based on my personal preferences and setup. They may not work perfectly for your system or needs without modification. Use them at your own risk and feel free to adapt them to your specific environment.
 
-## Arch
-`I use Arch Linux`
+## Contents
 
-`Note:` 
-Some scripts used in polybar depend on extra packages.
-I use arch linux, so some settings on the polybar were made exclusively for this use.
+- **Configuration Files**: Includes setup for terminal, editor, and other system tools.
+- **Scripts**: A collection of custom scripts I use for automating tasks or improving my workflow.
+- **Other Customizations**: Miscellaneous configurations for other applications or system tweaks.
