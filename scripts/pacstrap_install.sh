@@ -64,7 +64,6 @@ arch-chroot /mnt /bin/bash -c "sudo -u pedrokw paru -Syu timeshift intel-ucode s
 # jdk17-openjdk
 arch-chroot /mnt /bin/bash -c "echo i2c-dev > /etc/modules-load.d/i2c-dev.conf"
 arch-chroot /mnt /bin/bash -c "usermod -aG games,gamemode,i2c pedrokw"
-# arch-chroot /mnt /bin/bash -c "sudo -u pedrokw sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)""
 read $tmp
 arch-chroot /mnt /bin/bash -c "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinuxGRUB"
 echo -e "Heey, don't forget, ${RED}lvm${NC} module (/etc/default/grub) is important"
