@@ -37,7 +37,7 @@ fi
 # If no argument is provided, display current brightness
 if [ "$#" -eq 0 ]; then
     echo "Current brightness: $current_brightness%"
-    notify-send "Brightness Level" "Current brightness: $current_brightness%"
+    notify-send -a Brightctl "Brightness Level" "Current brightness: $current_brightness%"
     exit 0
 fi
 
@@ -66,5 +66,5 @@ fi
 ddcutil --display 1 setvcp 0x10 "$new_brightness"
 
 # Notify user
-notify-send "Brightness" "Brightness set to $new_brightness%"
+notify-send -a Brightctl "Brightness" "Brightness set to $new_brightness%"
 echo "Brightness set to $new_brightness%"
