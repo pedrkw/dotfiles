@@ -1,0 +1,14 @@
+[Desktop Entry]
+Exec=qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {d = allDesktops[i];d.wallpaperPlugin = "org.kde.image";d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General"); d.writeConfig("Image", "%u")}'
+GenericName=A custom way to set a wallpaper in Gwenview
+MimeType=inode/directory;image/avif;image/gif;image/heif;image/jpeg;image/jxl;image/png;image/bmp;image/x-eps;image/x-icns;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/tiff;image/x-psd;image/x-webp;image/webp;image/x-tga;image/x-xcf;application/x-krita;
+X-DocPath=gwenview/index.html
+Name=Set Custom Wallpaper
+NoDisplay=true
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
