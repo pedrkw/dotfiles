@@ -1,0 +1,58 @@
+# Custom blocked domain
+#||1337x.vpnonly.site
+#||https://protonge.com/
+0.0.0.0 1337x.vpnonly.site
+0.0.0.0 protonge.com
+
+# Title: Zlibrary scams
+# Last modified: 2024-05-07
+# --------------------------
+# /
+# |Contains 28 known URL's
+# |Please report any issues related to this file
+# |Or any URLs that are not listed at reddit.com/r/zlibrary
+# \
+#----------------------------------
+
+127.0.0.1 localhost
+127.0.0.1 localhost.localdomain
+127.0.0.1 local
+255.255.255.255 broadcasthost
+::1 localhost
+::1 ip6-localhost
+::1 ip6-loopback
+fe80::1%lo0 localhost
+ff00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+0.0.0.0 0.0.0.0
+0.0.0.0 zlib.is
+0.0.0.0 z-lib.ai
+0.0.0.0 z-lib.club
+0.0.0.0 z-lib.dev
+0.0.0.0 z-lib.ink
+0.0.0.0 z-lib.li
+0.0.0.0 z-lib.nl
+0.0.0.0 zlib.to
+0.0.0.0 zlibrary.to
+0.0.0.0 zlibrary.is
+0.0.0.0 z-lib.io
+0.0.0.0 z-lib.ee
+0.0.0.0 z-lib.tf
+0.0.0.0 z-lib.wf
+0.0.0.0 z-lib.yt
+0.0.0.0 z-lib.id
+0.0.0.0 z-lib.ws
+0.0.0.0 z-lib.lol
+0.0.0.0 zlibis.com
+0.0.0.0 zlibrary-global.com
+0.0.0.0 zlib-official.com
+0.0.0.0 zlibrary.lol
+0.0.0.0 z-library.live
+0.0.0.0 z-library.wiki
+0.0.0.0 z-lib.wiki
+0.0.0.0 z-library.blog
+0.0.0.0 z-library.help
+0.0.0.0 z-library-proxy.com
