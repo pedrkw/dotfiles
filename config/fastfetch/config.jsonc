@@ -121,7 +121,7 @@
     },
     {
       "type": "colors",
-      "paddingLeft": 2,
+      "paddingLeft": 0,
       "symbol": "circle",
     },
   ],
