@@ -10,6 +10,11 @@ FORMATS[1]="1 GIF 2 PNG 3 JPEG 4 SVG"
 FORMATS[2]="1 MP3 2 M4A 3 OPUS"
 FORMATS[3]="1 M4V 2 MP4 3 WEBM 4 MKV"
 
+# Optional: Check for required tools (uncomment to enable)
+# if ! command -v ffmpeg &> /dev/null; then echo "Error: ffmpeg is not installed."; exit 1; fi
+# if ! command -v convert &> /dev/null; then echo "Error: ImageMagick is not installed."; exit 1; fi
+# if ! command -v dialog &> /dev/null; then echo "Error: dialog is not installed."; exit 1; fi
+
 # Get timestamp
 get_timestamp() {
     date +"%Y_%m_%d_%H_%M_%S"
@@ -21,13 +26,32 @@ convert_file() {
     local format_index="$2"
     local input_file="$3"
 
+    # Validate category
+    if [[ ! "1 2 3" =~ $category ]]; then
+        echo "Error: Invalid category! Must be 1 (Image), 2 (Audio), or 3 (Video)."
+        exit 1
+    fi
+
+    # Validate format_index
+    if ! [[ $format_index =~ ^[0-9]+$ ]]; then
+        echo "Error: Format index must be an integer!"
+        exit 1
+    fi
+
+    local formats=(${FORMATS[$category]})
+    local max_index=$((${#formats[@]}/2))
+    if [[ $format_index -lt 1 || $format_index -gt $max_index ]]; then
+        echo "Error: Invalid format index! Must be between 1 and $max_index for category $category."
+        exit 1
+    fi
+
+    # Check if input file exists
     if [[ ! -f "$input_file" ]]; then
         echo "Error: File not found!"
         exit 1
     fi
 
     local timestamp="$(get_timestamp)"
-    local formats=(${FORMATS[$category]})
     local extension="$(echo ${formats[$((format_index*2-1))]} | tr '[:upper:]' '[:lower:]')"
     local filename="$timestamp.$extension"
 
@@ -35,23 +59,24 @@ convert_file() {
         1) output_folder="$OUTPUT_DIR/image" ;;
         2) output_folder="$OUTPUT_DIR/audio" ;;
         3) output_folder="$OUTPUT_DIR/video" ;;
-        *) echo "Error: Invalid category!"; exit 1 ;;
     esac
 
     output_path="$output_folder/$filename"
 
     case $category in
-        1) convert "$input_file" "$output_path" ;; # Image
-        2)
+        1) # Image conversion
+            convert "$input_file" "$output_path"
+            ;;
+        2) # Audio conversion
             case ${formats[$((format_index*2-1))]} in
                 MP3) ffmpeg -i "$input_file" -q:a 2 "$output_path" -y -progress pipe:1 ;;
                 M4A|OPUS) ffmpeg -i "$input_file" -b:a 128k "$output_path" -y -progress pipe:1 ;;
             esac
             ;;
-        3)
+        3) # Video conversion
             case ${formats[$((format_index*2-1))]} in
-                MP4|M4V|MKV) ffmpeg -hwaccel vaapi -vaapi_device /dev/dri/renderD128 -i "$input_file" -c:v h264_vaapi -qp 22 "$output_path" -y -progress pipe:1 ;;
-                WEBM) ffmpeg -hwaccel vaapi -vaapi_device /dev/dri/renderD128 -i "$input_file" -c:v vp9_vaapi -b:v 1M "$output_path" -y -progress pipe:1 ;;
+                MP4|M4V|MKV) ffmpeg -i "$input_file" -c:v libx264 -crf 22 -c:a aac -b:a 128k "$output_path" -y -progress pipe:1 ;;
+                WEBM) ffmpeg -i "$input_file" -c:v libvpx-vp9 -b:v 1M -c:a libopus -b:a 128k "$output_path" -y -progress pipe:1 ;;
             esac
             ;;
     esac
@@ -73,7 +98,8 @@ interactive_mode() {
     rm -f category.txt
 
     if [[ -z "${FORMATS[$category]}" ]]; then
-        echo "Invalid category!"; exit 1
+        echo "Invalid category!"
+        exit 1
     fi
 
     format_index=$(dialog --clear --title "Choose Format" --menu "Select output format:" 15 50 5 $(
