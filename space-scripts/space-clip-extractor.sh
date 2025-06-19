@@ -102,8 +102,9 @@ fi
 output_path="$output_dir/$output_name"
 
 # Run ffmpeg with VAAPI acceleration
-ffmpeg -hwaccel vaapi -vaapi_device /dev/dri/renderD128 -i "$orig_file" \
-    -ss "$start_time" -to "$end_time" -vf 'format=nv12,hwupload' \
-    -c:v h264_vaapi -b:v 5M -c:a aac -b:a 128k "$output_path" || error_exit "ffmpeg command failed."
+ffmpeg -hwaccel vaapi -vaapi_device /dev/dri/renderD128 \
+    -ss "$start_time" -to "$end_time" -i "$orig_file" \
+    -vf 'format=nv12,hwupload' -c:v h264_vaapi -b:v 5M \
+    -c:a aac -b:a 128k "$output_path" || error_exit "ffmpeg command failed."
 
 echo "Video clip created successfully at: $output_path"
