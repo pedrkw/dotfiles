@@ -1,0 +1,148 @@
+# Title: Blocklisted domains
+# Last modified: 2025-06-14
+# --------------------------
+#||1337x.vpnonly.site
+#||https://protonge.com/
+0.0.0.0 1337x.vpnonly.site
+0.0.0.0 protonge.com
+0.0.0.0 1377x.to
+0.0.0.0 1337x.so
+0.0.0.0 kickasstorrents.to
+0.0.0.0 thepiratebay.org
+0.0.0.0 therarbg.com
+0.0.0.0 therarbg.to
+0.0.0.0 baixaki.com.br
+0.0.0.0 zorox.to
+0.0.0.0 zoro.se
+0.0.0.0 zoroanime.se
+0.0.0.0 zoro.tv.site
+0.0.0.0 zoro.uno
+0.0.0.0 zoroto.online
+0.0.0.0 zoroanime.org
+0.0.0.0 zoroo.net
+0.0.0.0 zoro.com.de
+0.0.0.0 zorotv.city
+0.0.0.0 aimhaven.com
+0.0.0.0 apunkagames.com
+0.0.0.0 crohasit.net
+0.0.0.0 descargagame.com
+0.0.0.0 game3rb.com
+0.0.0.0 gamestorrents.fm
+0.0.0.0 gogunlocked.com
+0.0.0.0 igg-games.com
+0.0.0.0 nexus-games.net
+0.0.0.0 nosteamgames.ro
+0.0.0.0 oceanofapks.com
+0.0.0.0 oceansofgamess.com
+0.0.0.0 repack-games.com
+0.0.0.0 steam-repacks.com
+0.0.0.0 steamunlocked.net
+0.0.0.0 worldof.pcgames.net
+0.0.0.0 crackedfully.com
+0.0.0.0 ftuapps.dev
+0.0.0.0 getintopc.com
+0.0.0.0 haxpc.net
+0.0.0.0 karanpc.com
+0.0.0.0 kolompc.com
+0.0.0.0 portable4pc.com
+0.0.0.0 s0ft4pc.com
+0.0.0.0 sadeempc.com
+0.0.0.0 sampledrive.in
+0.0.0.0 vfxdownload.com
+0.0.0.0 vfxdownloads.net
+0.0.0.0 utorrent.com
+0.0.0.0 agfy.co
+0.0.0.0 alltorrents.co
+0.0.0.0 cracked-games.org
+0.0.0.0 crackingpatching.com
+0.0.0.0 extrogames.com
+0.0.0.0 freetp.org
+0.0.0.0 gamesreleaser.com
+0.0.0.0 getgamez.net
+0.0.0.0 hisgames.org
+0.0.0.0 loadgames.org
+0.0.0.0 mrpcgamer.co
+0.0.0.0 oceanofgames.com
+0.0.0.0 pcgamestorrents.com
+0.0.0.0 rgmechanics.com
+0.0.0.0 sgcrack.com
+0.0.0.0 small-games.info
+0.0.0.0 steamcracked.co
+0.0.0.0 steamhub.co
+0.0.0.0 steamunlocked.pro
+0.0.0.0 stggege.org
+0.0.0.0 unlocked-games.com
+
+# Title: Fake FitGirl Websites
+# Last modified: 2025-04-02
+# --------------------------
+! FitGirl Repacks fake sites
+! The only official site: fitgirl-repacks.site
+! https://reddit.com/r/FitGirlRepack/
+! https://reddit.com/r/PiratedGames/comments/drlx3r/does_anyone_know_the_official_website_for_fitgirl/
+! https://reddit.com/r/CrackWatch/comments/wl7nfb/dream_cycle_v209_release_fitgirl_repack_158_gb/?context=3
+||fitgirl-repacks.^$all,domain=~fitgirl-repacks.site
+||fitgirl-repack.^$all,domain=~fitgirl-repacks.site
+||fitgirlrepacks.^$all,domain=~fitgirl-repacks.site
+||fitgirlrepack.^$all,domain=~fitgirl-repacks.site
+||fitgirls-repack.*^$all,domain=~fitgirl-repacks.site
+||fitgirl-repacks-site.org^$doc,domain=~fitgirl-repacks.site
+! https://github.com/uBlockOrigin/uAssets/issues/18205
+||fitgirlrepacksite.com^$all,domain=~fitgirl-repacks.site
+! https://github.com/uBlockOrigin/uAssets/issues/18206
+||fitgirl.cc^$all,domain=~fitgirl-repacks.site
+! https://github.com/uBlockOrigin/uAssets/issues/15085
+! https://github.com/uBlockOrigin/uAssets/pull/15850
+@@||fitgirl-repacks.site^$image,popup
+
+# Title: Zlibrary scams
+# Last modified: 2024-05-07
+# --------------------------
+# /
+# |Contains 28 known URL's
+# |Please report any issues related to this file
+# |Or any URLs that are not listed at reddit.com/r/zlibrary
+# \
+#----------------------------------
+127.0.0.1 localhost
+127.0.0.1 localhost.localdomain
+127.0.0.1 local
+255.255.255.255 broadcasthost
+::1 localhost
+::1 ip6-localhost
+::1 ip6-loopback
+fe80::1%lo0 localhost
+ff00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+0.0.0.0 0.0.0.0
+0.0.0.0 zlib.is
+0.0.0.0 z-lib.ai
+0.0.0.0 z-lib.club
+0.0.0.0 z-lib.dev
+0.0.0.0 z-lib.ink
+0.0.0.0 z-lib.li
+0.0.0.0 z-lib.nl
+0.0.0.0 zlib.to
+0.0.0.0 zlibrary.to
+0.0.0.0 zlibrary.is
+0.0.0.0 z-lib.io
+0.0.0.0 z-lib.ee
+0.0.0.0 z-lib.tf
+0.0.0.0 z-lib.wf
+0.0.0.0 z-lib.yt
+0.0.0.0 z-lib.id
+0.0.0.0 z-lib.ws
+0.0.0.0 z-lib.lol
+0.0.0.0 zlibis.com
+0.0.0.0 zlibrary-global.com
+0.0.0.0 zlib-official.com
+0.0.0.0 zlibrary.lol
+0.0.0.0 z-library.live
+0.0.0.0 z-library.wiki
+0.0.0.0 z-lib.wiki
+0.0.0.0 z-library.blog
+0.0.0.0 z-library.help
+0.0.0.0 z-library-proxy.com
